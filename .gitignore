@@ -14,3 +14,10 @@ node_modules
 
 # .DS_Store is only for Mac users
 **/.DS_Store
+
+# README.md is a markdown file that is not needed
+# for the project to run
+README.md
+
+# pnpm-lock.yaml is a lock file for pnpm
+pnpm-lock.yaml
