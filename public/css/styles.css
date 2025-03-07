@@ -197,7 +197,7 @@ nav ul li {
 /* Styling for upgrade text */
 .upgrade-item p {
   font-size: 1.1em; /* Adjusts text size */
-  color: white; /* High contrast */
+  color: rgb(17, 20, 26); /* High contrast */
   margin-top: 5px; /* Adds space above text */
   font-weight: bold; /* Emphasizes text */
 }
@@ -260,3 +260,40 @@ nav ul li {
 
 
 
+
+@media (max-width: 600px) {
+  .hero h2 {
+      font-size: 1.5em;
+  }
+
+  .car-info button {
+      width: 100%;
+  }
+}
+@media (min-width: 600px) and (max-width: 1024px) {
+  .reviews-upgrades {
+      flex-direction: row;
+      justify-content: center;
+  }
+
+  .grid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px;
+  }
+
+  .car-info {
+      max-width: 600px;
+  }
+
+  .grid {
+      grid-template-columns: repeat(4, 1fr);
+  }
+}
