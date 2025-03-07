@@ -1,6 +1,262 @@
-/******* Change Box Model ***************/
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
+
+/* ===========================
+    GENERAL STYLING
+   =========================== */
+   
+   /* Applies a global font family */
+   
+body {
+  font-family: 'Arial', sans-serif; /* Specifies font family */
+  margin: 0; /* Removes default margin */
+  padding: 0; /* Removes default padding */
 }
+
+/* ===========================
+   hEADER STYLING
+   =========================== */
+#top-header {
+  display: flex; /* Enables flexbox for alignment */
+  justify-content: space-between; /* Pushes content to both ends */
+  align-items: center; /* Aligns items vertically */
+  padding: 15px 20px; /* Adds spacing inside the header */
+  color: white; /* Sets text color to white */
+}
+
+/* Center only the h2 text inside .hero */
+.hero h2 {
+  text-align: center; /* Centers the text horizontally */
+  width: 100%; /* Ensures it spans the full width for centering */
+}
+
+
+/* ===========================
+    NAVIGATION LINK STYLING
+   =========================== */
+nav {
+  background-color: black; /* Sets the background color to black */
+  padding: 10px 0; /* Adds vertical padding for spacing */
+  display: flex; /* Enables flexbox for alignment */
+  justify-content: center; /* Centers the navigation bar */
+}
+
+nav ul {
+  list-style: none; /* Removes default bullet points */
+  display: flex; /* Uses flexbox for layout */
+  flex-direction: row; /* Arranges items horizontally */
+  align-items: center; /* Aligns items vertically in the center */
+  justify-content: space-between; /* Distributes items evenly */
+  padding: 0; /* Removes default padding */
+  margin: 0; /* Removes default margin */
+  width: 80%; /* Controls width to maintain spacing */
+}
+
+/* Styles individual list items */
+nav ul li {
+  color: white; /* Sets text color to white */
+  font-size: 1.5em; /* Increases font size */
+  font-weight: bold; /* Makes text bold */
+  padding: 10px 20px; /* Adds spacing around the text */
+  text-align: center; /* Centers text */
+}
+
+
+/* ===========================
+   HERO SECTION STYLING
+   =========================== */
+   
+   .hero {
+    position: relative; /* Enables absolute positioning for child elements */
+    text-align: center; /* Centers the text inside the hero section */
+    display: flex; /* Uses flexbox for layout */
+    flex-direction: column; /* Stacks elements (text, image, etc.) vertically */
+    align-items: center; /* Aligns elements horizontally at the center */
+  }
+  
+
+
+  /* ===========================
+     CAR INFORMATION BOX
+     =========================== */
+  
+  .car-info {
+    position: absolute; /* Allows the box to overlap the image */
+    top: 20%; /* Moves the box down slightly from the top */
+    left: 23%; /* Positions the box slightly to the right */
+    background-color: rgba(255, 255, 255, 0.6); /* White background with 60% transparency */
+    padding: 15px; /* Adds space inside the box */
+    border-radius: 8px; /* Softens the box corners */
+    text-align: left; /* Aligns text to the left for readability */
+  }
+  
+  /* Styles the car title (DMC DeLorean) */
+  .car-info h3 {
+    color: #009cde; /* Sky blue color for emphasis */
+    font-size: 1.8em; /* Increases font size */
+    font-weight: bold; /* Makes the text stand out */
+  }
+  
+  /* Styles the list of car features */
+  .car-info ul {
+    list-style: none; /* Removes bullet points */
+    padding: 0; /* Removes default padding */
+    color: #009cde; /* Sky blue text for consistency */
+    font-size: 1.2em; /* Adjusts size for readability */
+  }
+  
+
+
+  /* ===========================
+     BUTTON STYLING ("Own Today")
+     =========================== */
+  
+  /* Styles the "Own Today" button */
+  .car-info button {
+    background-color: #009cde; /* Sky blue background */
+    color: black; /* Black text for contrast */
+    padding: 10px 20px; /* Adds space inside the button */
+    border: none; /* Removes default borders */
+    border-radius: 5px; /* Softens button edges */
+    font-size: 1.1em; /* Makes the button text readable */
+    font-weight: bold; /* Enhances text appearance */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+  }
+  
+  /* Styles the button on hover */
+  .car-info button:hover {
+    background-color: #0077b6; /* Darker blue shade when hovered */
+  }
+
+  
+
+  /* ===========================
+     IMAGE STYLING
+     =========================== */
+  
+  .hero img {
+    max-width: 80%; /* Ensures the image is responsive */
+    height: auto; /* Maintains aspect ratio */
+    display: block; /* Centers image inside its container */
+    margin: auto; /* Aligns the image horizontally */
+  }
+  
+
+
+  /* ===========================
+   CONTAINER FOR REVIEWS & UPGRADES
+   =========================== */
+.reviews-upgrades {
+  display: grid; /* Enables grid layout */
+  grid-template-columns: 1fr 1fr; /* Divides into two equal parts */
+  gap: 40px; /* Adds spacing between the two sections */
+  padding: 20px; /* Adds padding around the container */
+  align-items: start; /* Aligns items at the top */
+}
+
+
+
+/* ===========================
+   UPGRADES SECTION
+   =========================== */
+.upgrades {
+  background-color: white; /* Keeps background clean */
+  padding: 20px; /* Adds space inside */
+  border-radius: 5px; /* Softens edges */
+  text-align: center; /* Centers content */
+}
+
+/* Creates a 2x2 grid layout for upgrades */
+.grid {
+  display: grid; /* Enables grid layout */
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  gap: 15px; /* Adds space between grid items */
+  justify-content: center; /* Centers the grid */
+  align-items: center; /* Aligns items properly */
+}
+
+/* Styles for each upgrade item */
+.upgrade-item {
+  background-color: #009cde; /* Sky blue background */
+  padding: 10px; /* Adds spacing */
+  border-radius: 5px; /* Softens edges */
+  text-align: center; /* Centers text */
+  display: flex; /* Enables flexbox within grid */
+  flex-direction: column; /* Stacks content vertically */
+  align-items: center; /* Centers items */
+  justify-content: center; /* Ensures even spacing */
+}
+
+/* Styling for images inside upgrade items */
+.upgrade-item img {
+  max-width: 80px; /* Limits width */
+  height: auto; /* Maintains aspect ratio */
+  border-radius: 5px; /* Softens edges */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow */
+}
+
+/* Styling for upgrade text */
+.upgrade-item p {
+  font-size: 1.1em; /* Adjusts text size */
+  color: white; /* High contrast */
+  margin-top: 5px; /* Adds space above text */
+  font-weight: bold; /* Emphasizes text */
+}
+
+
+
+/* ===========================
+   REVIEWS SECTION
+   =========================== */
+.reviews {
+  background-color: white; /* Keeps background clean */
+  padding: 20px; /* Adds spacing */
+  text-align: left; /* Aligns text */
+}
+
+/* Removes bullet points from the list */
+.reviews ul {
+  padding: 0; /* Removes default padding */
+  font-size: 1.1em; /* Adjusts text size */
+}
+
+/* Adds spacing between reviews */
+.reviews ul li {
+  padding: 10px 0; /* Adds spacing */
+  border-bottom: 1px solid #e0e0e0; /* Light separator */
+}
+
+/* Removes border from last review */
+.reviews ul li:last-child {
+  border-bottom: none;
+}
+
+/* Aligns the title */
+.reviews h3 {
+  text-align: left;
+}
+
+
+/* Parent container to hold both sections side by side */
+.reviews-upgrades {
+  display: grid; /* Enables CSS Grid */
+  grid-template-columns: 1fr 1fr; /* Creates two equal columns */
+  gap: 40px; /* Adds space between the two sections */
+  padding: 20px; /* Adds padding around the container */
+  align-items: start; /* Aligns items at the top */
+}
+
+/* Move Upgrades to the Left */
+.upgrades {
+  grid-column: 1; /* Places upgrades in the first column */
+  /*Move upgrades up slightly */
+  margin-top: -375px;
+}
+
+/* Move Reviews to the Right */
+.reviews {
+  grid-column: 2; /* Places reviews in the second column */
+}
+
+
+
+
