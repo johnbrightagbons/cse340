@@ -11,7 +11,8 @@ const env = require("dotenv").config()
 const app = express()
 const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
-
+const inventoryRoute = require("./routes/inventoryRoute")
+const utilities = require('./utilities');
 
 /* ***********************
  * View Engine and Templates
@@ -28,14 +29,33 @@ app.use(static)
 /* ***********************
  * Index Route
  *************************/
-app.get("/", (req, res) => {
-  const nav = '<ul><li><a href="/" title="Home page">Home</a></li><li><a href="/inv/type/1" title="See our inventory of Custom vehicles">Custom</a></li><li><a href="/inv/type/5" title="See our inventory of Sedan vehicles">Sedan</a></li><li><a href="/inv/type/2" title="See our inventory of Sport vehicles">Sport</a></li><li><a href="/inv/type/3" title="See our inventory of SUV vehicles">SUV</a></li><li><a href="/inv/type/4" title="See our inventory of Truck vehicles">Truck</a></li></ul>'
-  baseController.buildHome(req, res)
-  res.render("index", { title: "Home", nav: nav })
-})
+app.get("/", utilities.handleErrors(baseController.buildHome))
 
 // Inventory routes
 app.use("/inv", inventoryRoute)
+
+
+/* ***********************
+ * File not Found Route
+ *************************/
+app.use(async (req, res, next) => {
+  next({status: 404, message: 'Oops!, You weren’t supposed to see this... Now we have to erase your memory 🕶️👽'})
+})
+
+/* ***********************
+* Express Error Handler
+* Place after all other middleware
+*************************/
+app.use(async (err, req, res, next) => {
+  let nav = await utilities.getNav()
+  console.error(`Error at: "${req.originalUrl}": ${err.message}`)
+  if(err.status == 404){ message = err.message} else {message = 'Oh no! There was a crash. Maybe try a different route?'}
+  res.render("errors/error", {
+    title: err.status || 'Server Error',
+    message,
+    nav
+  })
+})
 
 /* ***********************
  * Local Server Information
@@ -50,3 +70,5 @@ const host = process.env.HOST
 app.listen(port, () => {
   console.log(`app listening on ${host}:${port}`)
 })
+
+

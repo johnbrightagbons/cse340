@@ -1,11 +1,11 @@
 const invModel = require("../models/inventory-model")
-const Util = {}
 
+const Util = {}
 
 /* ************************
  * Constructs the nav HTML unordered list
  ************************** */
-Util.getNav = async function (req, res, next) {
+Util.getNav = async function () {
   let data = await invModel.getClassifications()
   console.log(data)
   let list = "<ul>"
@@ -13,10 +13,7 @@ Util.getNav = async function (req, res, next) {
   data.rows.forEach((row) => {
     list += "<li>"
     list += 
-      '<a href="/inv/type/classification_id' +
-        // Route to build inventory by classification view
-      router.get("/type/:classificationId", invController.buildByClassificationId);
-      
+      '<a href="/inv/type/' +
       row.classification_id +
       '" title="See our inventory of ' +
       row.classification_name +
@@ -26,24 +23,22 @@ Util.getNav = async function (req, res, next) {
     list += "</li>"
   })
   list += "</ul>"
- 
   return list
 }
 
-
-
 /* **************************************
-* Build the classification view HTML
-* ************************************ */
-Util.buildClassificationGrid = async function(data){
-  let grid
-  if(data.length > 0){
-    grid = '<ul id="inv-display">'
+ * Build the classification view HTML
+ ************************************ */
+Util.buildClassificationGrid = function (data) {
+  let grid = ""
+  if (data.length > 0) {
+    grid = '<div class="vehicle-container"><ul id="inv-display">'
+
     data.forEach(vehicle => { 
       grid += '<li>'
-      grid +=  '<a href="../../inv/detail/'+ vehicle.inv_id 
+      grid += '<a href="../../inv/detail/'+ vehicle.inv_id 
       + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model 
-      + 'details"><img src="' + vehicle.inv_thumbnail 
+      + ' details"><img src="' + vehicle.inv_thumbnail 
       +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
       +' on CSE Motors" /></a>'
       grid += '<div class="namePrice">'
@@ -59,12 +54,37 @@ Util.buildClassificationGrid = async function(data){
       grid += '</li>'
     })
     grid += '</ul>'
-  } else { 
+  } else {
+    grid += '</ul></div>'; 
+
     grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
   }
-  return grid
+  grid += '</ul></div>';
+  return grid;
+
+}
+
+/* **************************************
+ * Build the vehicle detail view HTML
+ ************************************ */
+Util.buildVehicleDetail = function (vehicle) {
+  let detail = '<div id="vehicle-detail">'
+  detail += '<img src="' + vehicle.inv_image + '" alt="Image of ' + vehicle.inv_make + ' ' + vehicle.inv_model + ' on CSE Motors" />'
+  detail += '<h2>' + vehicle.inv_make + ' ' + vehicle.inv_model + '</h2>'
+  detail += '<p>Price: $' + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</p>'
+  detail += '<p>Description: ' + vehicle.inv_description + '</p>'
+  detail += '<p>Color: ' + vehicle.inv_color + '</p>'
+  detail += '<p>Mileage: ' + new Intl.NumberFormat('en-US').format(vehicle.inv_mileage) + ' miles</p>'
+  detail += '</div>'
+  return detail
 }
 
 
-module.exports = router;
+/* ****************************************
+ * Middleware For Handling Errors
+ * Wrap other function in this for 
+ * General Error Handling
+ **************************************** */
+Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
+
 module.exports = Util

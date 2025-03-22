@@ -1,8 +1,6 @@
-
 /* ===========================
-    GENERAL STYLING
+   GENERAL STYLING
    =========================== */
-   
    /* Applies a global font family */
    
 body {
@@ -259,7 +257,117 @@ nav ul li {
 
 
 
+/* **************************************
+ Content Heading
+************************************* */
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 20px;
+  color: #02010f;
+}
 
+/* **************************************
+ Message Block
+************************************* */
+.message-block {
+  width: 80%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 15px;
+  background-color: #e0f7fa;
+  border-left: 5px solid #00796b;
+  color: #00796b;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.message-block.error {
+  background-color: #ffebee;
+  border-left: 5px solid #d32f2f;
+  color: #d32f2f;
+}
+
+.message-block.success {
+  background-color: #e8f5e9;
+  border-left: 5px solid #388e3c;
+  color: #388e3c;
+}
+
+
+/* **************************************
+ Inventory Items Display (Grid)
+************************************* */
+.vehicle-container {
+  background-color: #fff;/* Sets background color to purple */
+  padding: 20px; /* Adds padding inside the box */
+  display: flex; /* Enables flexbox for centering */
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-size: 1rem;
+  color: #666;
+  display: flex;
+    gap: 10px;
+    list-style: none;
+}
+
+
+/* ===========================
+   ERROR MESSAGE STYLING
+   =========================== */
+/* Style for the error message */
+.error-message {
+  font-size: 24px;
+  font-weight: bold;
+  color: black; /* Red color */
+  text-align: center;
+  background-color: #f7f5f5; /* Light red background */
+  padding: 10px;
+  border-radius: 1px;
+  display: flex;
+  margin-top: 20px;
+  margin-left: 70px;
+  margin-right: 70px;
+}
+  
+
+
+
+
+/* **************************************
+ Responsive Design
+************************************* */
+@media (max-width: 768px) {
+  .grid-container {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  h1 {
+      font-size: 1.5rem;
+  }
+}
+
+
+
+
+
+   
 
 @media (max-width: 600px) {
   .hero h2 {
