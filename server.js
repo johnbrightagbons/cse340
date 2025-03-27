@@ -37,16 +37,13 @@ app.use("/inv", inventoryRoute)
 
 
 /* ***********************
- * Vehicle Details Route
- *************************/
-app.get("/inv/detail/:inv_id", invController.showVehicleDetail)
-
-/* ***********************
  * File not Found Route
  *************************/
 app.use(async (req, res, next) => {
   next({status: 404, message: 'Oops!, You weren’t supposed to see this... Now we have to erase your memory 🕶️👽'})
 })
+
+
 
 /* ***********************
 * Express Error Handler
