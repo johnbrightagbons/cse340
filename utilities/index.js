@@ -67,18 +67,22 @@ Util.buildClassificationGrid = function (data) {
 /* **************************************
  * Build the vehicle detail view HTML
  ************************************ */
-Util.buildVehicleDetail = function (vehicle) {
-  let detail = '<div id="vehicle-detail">'
-  detail += '<img src="' + vehicle.inv_image + '" alt="Image of ' + vehicle.inv_make + ' ' + vehicle.inv_model + ' on CSE Motors" />'
-  detail += '<h2>' + vehicle.inv_make + ' ' + vehicle.inv_model + '</h2>'
-  detail += '<p>Price: $' + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</p>'
-  detail += '<p>Description: ' + vehicle.inv_description + '</p>'
-  detail += '<p>Color: ' + vehicle.inv_color + '</p>'
-  detail += '<p>Mileage: ' + new Intl.NumberFormat('en-US').format(vehicle.inv_mileage) + ' miles</p>'
-  detail += '</div>'
-  return detail
-}
+Util.formatVehicleHtml = function (vehicle) {
+  if (!vehicle.inv_make || !vehicle.inv_model || !vehicle.inv_image || !vehicle.inv_year || !vehicle.inv_price || !vehicle.inv_miles || !vehicle.inv_description) {
+    throw new Error('Vehicle data is incomplete');
+  }
 
+  return `
+      <div class="vehicle-detail">
+          <h1>${vehicle.inv_make} ${vehicle.inv_model}</h1>
+          <img src="${vehicle.inv_image}" alt="${vehicle.inv_make} ${vehicle.inv_model}">
+          <p><strong>Year:</strong> ${vehicle.inv_year}</p>
+          <p><strong>Price:</strong> $${parseInt(vehicle.inv_price).toLocaleString()}</p>
+          <p><strong>Mileage:</strong> ${parseInt(vehicle.inv_miles).toLocaleString()} miles</p>
+          <p>${vehicle.inv_description}</p>
+      </div>
+  `;
+}
 
 /* ****************************************
  * Middleware For Handling Errors
