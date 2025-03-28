@@ -38,7 +38,12 @@ invCont.showVehicleDetail = async function (req, res, next) {
       return res.status(400).send("Vehicle not found");
     }
     const vehicleHTML = utilities.formatVehicleHtml(vehicle);
-    res.render('inventory/vehicleDetail', { title: `${vehicle.inv_make} ${vehicle.inv_model}`, vehicleHTML });
+    const nav = await utilities.getNav(); // Create the nav variable
+    res.render('inventory/vehicleDetail', { 
+      title: `${vehicle.inv_make} ${vehicle.inv_model}`, 
+      vehicleHTML, 
+      nav // Pass nav to the template
+    });
   } catch (error) {
     console.error(error);
     res.status(500).send("Error fetching vehicle details.");
