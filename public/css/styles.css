@@ -31,7 +31,7 @@ body {
     NAVIGATION LINK STYLING
    =========================== */
 nav {
-  background-color: black; /* Sets the background color to black */
+  background-color: rgb(235, 182, 182); /* Sets the background color to black */
   padding: 10px 0; /* Adds vertical padding for spacing */
   display: flex; /* Enables flexbox for alignment */
   justify-content: center; /* Centers the navigation bar */
