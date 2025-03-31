@@ -21,7 +21,7 @@ invCont.buildByClassificationId = async function (req, res, next) {
   res.render("inventory/classification", {
     title: className + " vehicles",
     nav,
-    grid, // Ensure the correct variable is passed
+    grid, 
   })
 }
 

@@ -1,8 +1,8 @@
 /* ===========================
    GENERAL STYLING
    =========================== */
-   /* Applies a global font family */
-   
+/* Applies a global font family */
+
 body {
   font-family: 'Arial', sans-serif; /* Specifies font family */
   margin: 0; /* Removes default margin */
@@ -10,7 +10,7 @@ body {
 }
 
 /* ===========================
-   hEADER STYLING
+   HEADER STYLING
    =========================== */
 #top-header {
   display: flex; /* Enables flexbox for alignment */
@@ -26,15 +26,15 @@ body {
   width: 100%; /* Ensures it spans the full width for centering */
 }
 
-
 /* ===========================
-    NAVIGATION LINK STYLING
+   NAVIGATION LINK STYLING
    =========================== */
 nav {
-  background-color: rgb(235, 182, 182); /* Sets the background color to black */
+  background-color: black; /* Sets the background color to black */
   padding: 10px 0; /* Adds vertical padding for spacing */
   display: flex; /* Enables flexbox for alignment */
   justify-content: center; /* Centers the navigation bar */
+  
 }
 
 nav ul {
@@ -50,97 +50,97 @@ nav ul {
 
 /* Styles individual list items */
 nav ul li {
-  color: white; /* Sets text color to white */
+  padding: 10px 20px; /* Adds spacing around the text */
+}
+
+nav ul li a {
+  color: white !important; /* Sets text color to white */
   font-size: 1.5em; /* Increases font size */
   font-weight: bold; /* Makes text bold */
   padding: 10px 20px; /* Adds spacing around the text */
   text-align: center; /* Centers text */
+  text-decoration: none; /* Removes underline */
 }
 
+nav ul li a:hover {
+  color: #080bf3; /* Changes color on hover */
+}
 
 /* ===========================
    HERO SECTION STYLING
    =========================== */
-   
-   .hero {
-    position: relative; /* Enables absolute positioning for child elements */
-    text-align: center; /* Centers the text inside the hero section */
-    display: flex; /* Uses flexbox for layout */
-    flex-direction: column; /* Stacks elements (text, image, etc.) vertically */
-    align-items: center; /* Aligns elements horizontally at the center */
-  }
-  
 
+.hero {
+  position: relative; /* Enables absolute positioning for child elements */
+  text-align: center; /* Centers the text inside the hero section */
+  display: flex; /* Uses flexbox for layout */
+  flex-direction: column; /* Stacks elements (text, image, etc.) vertically */
+  align-items: center; /* Aligns elements horizontally at the center */
+}
 
-  /* ===========================
-     CAR INFORMATION BOX
-     =========================== */
-  
-  .car-info {
-    position: absolute; /* Allows the box to overlap the image */
-    top: 20%; /* Moves the box down slightly from the top */
-    left: 23%; /* Positions the box slightly to the right */
-    background-color: rgba(255, 255, 255, 0.6); /* White background with 60% transparency */
-    padding: 15px; /* Adds space inside the box */
-    border-radius: 8px; /* Softens the box corners */
-    text-align: left; /* Aligns text to the left for readability */
-  }
-  
-  /* Styles the car title (DMC DeLorean) */
-  .car-info h3 {
-    color: #009cde; /* Sky blue color for emphasis */
-    font-size: 1.8em; /* Increases font size */
-    font-weight: bold; /* Makes the text stand out */
-  }
-  
-  /* Styles the list of car features */
-  .car-info ul {
-    list-style: none; /* Removes bullet points */
-    padding: 0; /* Removes default padding */
-    color: #009cde; /* Sky blue text for consistency */
-    font-size: 1.2em; /* Adjusts size for readability */
-  }
-  
+/* ===========================
+   CAR INFORMATION BOX
+   =========================== */
 
+.car-info {
+  position: absolute; /* Allows the box to overlap the image */
+  top: 20%; /* Moves the box down slightly from the top */
+  left: 23%; /* Positions the box slightly to the right */
+  background-color: rgba(255, 255, 255, 0.6); /* White background with 60% transparency */
+  padding: 15px; /* Adds space inside the box */
+  border-radius: 8px; /* Softens the box corners */
+  text-align: left; /* Aligns text to the left for readability */
+}
 
-  /* ===========================
-     BUTTON STYLING ("Own Today")
-     =========================== */
-  
-  /* Styles the "Own Today" button */
-  .car-info button {
-    background-color: #009cde; /* Sky blue background */
-    color: black; /* Black text for contrast */
-    padding: 10px 20px; /* Adds space inside the button */
-    border: none; /* Removes default borders */
-    border-radius: 5px; /* Softens button edges */
-    font-size: 1.1em; /* Makes the button text readable */
-    font-weight: bold; /* Enhances text appearance */
-    cursor: pointer; /* Changes cursor to pointer on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
-  }
-  
-  /* Styles the button on hover */
-  .car-info button:hover {
-    background-color: #0077b6; /* Darker blue shade when hovered */
-  }
+/* Styles the car title (DMC DeLorean) */
+.car-info h3 {
+  color: #009cde; /* Sky blue color for emphasis */
+  font-size: 1.8em; /* Increases font size */
+  font-weight: bold; /* Makes the text stand out */
+}
 
-  
+/* Styles the list of car features */
+.car-info ul {
+  list-style: none; /* Removes bullet points */
+  padding: 0; /* Removes default padding */
+  color: #009cde; /* Sky blue text for consistency */
+  font-size: 1.2em; /* Adjusts size for readability */
+}
 
-  /* ===========================
-     IMAGE STYLING
-     =========================== */
-  
-  .hero img {
-    max-width: 80%; /* Ensures the image is responsive */
-    height: auto; /* Maintains aspect ratio */
-    display: block; /* Centers image inside its container */
-    margin: auto; /* Aligns the image horizontally */
-  }
-  
+/* ===========================
+   BUTTON STYLING ("Own Today")
+   =========================== */
 
+/* Styles the "Own Today" button */
+.car-info button {
+  background-color: #009cde; /* Sky blue background */
+  color: black; /* Black text for contrast */
+  padding: 10px 20px; /* Adds space inside the button */
+  border: none; /* Removes default borders */
+  border-radius: 5px; /* Softens button edges */
+  font-size: 1.1em; /* Makes the button text readable */
+  font-weight: bold; /* Enhances text appearance */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+}
 
-  /* ===========================
+/* Styles the button on hover */
+.car-info button:hover {
+  background-color: #0077b6; /* Darker blue shade when hovered */
+}
+
+/* ===========================
+   IMAGE STYLING
+   =========================== */
+
+.hero img {
+  max-width: 80%; /* Ensures the image is responsive */
+  height: auto; /* Maintains aspect ratio */
+  display: block; /* Centers image inside its container */
+  margin: auto; /* Aligns the image horizontally */
+}
+
+/* ===========================
    CONTAINER FOR REVIEWS & UPGRADES
    =========================== */
 .reviews-upgrades {
@@ -150,8 +150,6 @@ nav ul li {
   padding: 20px; /* Adds padding around the container */
   align-items: start; /* Aligns items at the top */
 }
-
-
 
 /* ===========================
    UPGRADES SECTION
@@ -200,8 +198,6 @@ nav ul li {
   font-weight: bold; /* Emphasizes text */
 }
 
-
-
 /* ===========================
    REVIEWS SECTION
    =========================== */
@@ -233,7 +229,6 @@ nav ul li {
   text-align: left;
 }
 
-
 /* Parent container to hold both sections side by side */
 .reviews-upgrades {
   display: grid; /* Enables CSS Grid */
@@ -254,8 +249,6 @@ nav ul li {
 .reviews {
   grid-column: 2; /* Places reviews in the second column */
 }
-
-
 
 /* **************************************
  Content Heading
@@ -295,12 +288,11 @@ h1 {
   color: #388e3c;
 }
 
-
 /* **************************************
  Inventory Items Display (Grid)
 ************************************* */
 .vehicle-container {
-  background-color: #fff;/* Sets background color to purple */
+  background-color: #fff; /* Sets background color to purple */
   padding: 20px; /* Adds padding inside the box */
   display: flex; /* Enables flexbox for centering */
   justify-content: center; /* Centers content horizontally */
@@ -323,10 +315,9 @@ h1 {
   font-size: 1rem;
   color: #666;
   display: flex;
-    gap: 10px;
-    list-style: none;
+  gap: 10px;
+  list-style: none;
 }
-
 
 /* ===========================
    ERROR MESSAGE STYLING
@@ -345,15 +336,14 @@ h1 {
   margin-left: 70px;
   margin-right: 70px;
 }
-  
 
 /* **************************************
-Vehicle Detail Page 
-************************************** */
+ Vehicle Detail Page 
+************************************* */
 /* Vehicle Detail Page Styles */
 
 /* Container for the vehicle details */
-.vehicle-detail{
+.vehicle-detail {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
@@ -363,6 +353,197 @@ Vehicle Detail Page
   font-size: 1em;
 }
 
+/* ===========================
+   LOGIN PAGE STYLING
+   =========================== */
+
+/* Login container */
+.login-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  color: white;
+  background-color: #1201a8;
+  border-radius: 8px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Title */
+.login-container h1 {
+  font-size: 24px;
+  color: #333333;
+  margin-bottom: 20px;
+}
+
+/* Form styles */
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-right: 2rem;
+}
+
+/* Input fields */
+.login-container input {
+  padding: 12px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
+}
+
+/* Focus effect on inputs */
+.login-container input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Submit button */
+.login-container button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 108%; /* 80% of the parent container */
+  max-width: 108%;
+  
+}
+
+/* Hover effect */
+.login-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Flash message */
+.flash-message {
+  color: red; /* Displays messages in red to indicate an error */
+  font-weight: bold; /* Makes the message stand out */
+  text-align: center; /* Centers the message */
+}
+label {
+  margin-bottom: -10px; /* Reduces space between label and input */
+  }
+
+/* Registration link */
+.login-container p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.login-container a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.login-container a:hover {
+  text-decoration: underline;
+}
+
+
+/* ===========================
+   REGISTER PAGE STYLING
+   =========================== */
+
+/* Register container */
+.register-container {
+  max-width: 400px; /* Restricts width */
+  margin: 50px auto; /* Centers the form */
+  padding: 20px; /* Adds internal spacing */
+  color: white; /* Text color */
+  background-color: #1201a8; /* Matches the login form color */
+  border-radius: 8px; /* Softens corners */
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1); /* Adds a shadow */
+  text-align: left; /* Push text left */
+}
+
+/* Title */
+.register-container h1 {
+  font-size: 24px; /* Sets title size */
+  color: #ffffff; /* Keeps text white for contrast */
+  margin-bottom: 20px; /* Adds spacing */
+}
+
+/* Form styling */
+.register-container form {
+  display: flex; /* Enables flexbox */
+  flex-direction: column; /* Stacks inputs vertically */
+  gap: 10px; /* Adds spacing between inputs */
+  margin-right: 2rem; /* Aligns form properly */
+}
+
+/* Input fields */
+.register-container input {
+  padding: 12px; /* Increases field height */
+  border: 1px solid #cccccc; /* Adds a light border */
+  border-radius: 4px; /* Rounds input edges */
+  font-size: 16px; /* Increases readability */
+  width: 100%; /* Makes inputs responsive */
+}
+
+/* Focus effect on inputs */
+.register-container input:focus {
+  border-color: #007bff; /* Highlights input on focus */
+  outline: none; /* Removes default outline */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Adds glow effect */
+}
+
+/* Submit button */
+.register-container button {
+  background-color: #007bff; /* Primary blue color */
+  color: white; /* White text */
+  border: none; /* Removes border */
+  padding: 12px; /* Increases button size */
+  font-size: 16px; /* Makes text readable */
+  border-radius: 6px; /* Rounds button corners */
+  cursor: pointer; /* Changes cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition effect */
+  width: 108%; /* Expands button */
+  max-width: 108%;
+}
+
+/* Hover effect */
+.register-container button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Flash message for errors */
+.flash-message {
+  color: red; /* Displays messages in red */
+  font-weight: bold; /* Stands out */
+  text-align: center; /* Centers the message */
+}
+
+/* Login link */
+.register-container p {
+  margin-top: 10px; /* Adds space above link */
+  font-size: 14px; /* Makes text readable */
+}
+
+.register-container a {
+  color: #007bff; /* Matches the button color */
+  text-decoration: none; /* Removes underline */
+}
+
+.register-container a:hover {
+  text-decoration: underline; /* Underlines on hover */
+}
+label {
+  margin-bottom: -10px; /* Reduces space between label and input */
+
+}
+input:required {
+  box-shadow: inset 5px 0 red; /* Red on the right when empty */
+}
+
+input:required:valid {
+  box-shadow: inset 5px 0 green; /* Green on the right when filled */
+}
 
 
 
@@ -371,53 +552,47 @@ Vehicle Detail Page
 ************************************* */
 @media (max-width: 768px) {
   .grid-container {
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 
   h1 {
-      font-size: 1.5rem;
+    font-size: 1.5rem;
   }
 }
 
-
-
-
-
-   
-
 @media (max-width: 600px) {
   .hero h2 {
-      font-size: 1.5em;
+    font-size: 1.5em;
   }
 
   .car-info button {
-      width: 100%;
+    width: 100%;
   }
 }
 @media (min-width: 600px) and (max-width: 1024px) {
   .reviews-upgrades {
-      flex-direction: row;
-      justify-content: center;
+    flex-direction: row;
+    justify-content: center;
   }
 
   .grid {
-      grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (min-width: 1024px) {
   .hero {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
   }
 
   .car-info {
-      max-width: 600px;
+    max-width: 600px;
   }
 
   .grid {
-      grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }

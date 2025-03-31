@@ -1,0 +1,35 @@
+<%# **************************************
+    The Content Heading
+************************************* %>
+<% if (title) { %>
+    <h1><%= title %></h1>
+<% } else { %>
+<% } %>
+<%# **************************************
+    Display Flash Messages (if any)
+************************************* %>
+<% if (message) { %>
+    <div class="flash-message">
+        <p><%= message %></p>
+    </div>
+<% } %>
+<div class="register-container">
+    <form action="/account/register" method="POST">
+        <label for="account_firstname">*First name</label>
+        <input type="text" id="account_firstname" name="account_firstname" required>
+    
+        <label for="account_lastname">*Last name</label>
+        <input type="text" id="account_lastname" name="account_lastname" required>
+    
+        <label for="account_email">*Email address</label>
+        <input type="email" id="account_email" name="account_email" required>
+    
+        <label for="account_password">*Password</label>
+        <input type="password" id="account_password" name="account_password" 
+               pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}" 
+               title="Password must be at least 12 characters, include 1 uppercase letter, 1 number, and 1 special character."
+               required>
+    
+        <button type="submit" class="register-btn">Register</button>
+    </form>
+</div>
