@@ -11,7 +11,14 @@
         <%- body %>
     </main>
 
-    <%- include('../partials/footer') %>
+    <footer>
+        <%- include('../partials/footer') %>
+        <% if (message) { %>
+            <div class="footer-error">
+                <p><%= message %></p>
+            </div>
+        <% } %>
+    </footer>
     </div>
 </body>
 </html>

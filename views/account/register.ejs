@@ -8,28 +8,39 @@
 <%# **************************************
     Display Flash Messages (if any)
 ************************************* %>
-<% if (message) { %>
-    <div class="flash-message">
-        <p><%= message %></p>
-    </div>
-<% } %>
+
+<% if (errors) { %>
+        <ul class="notice">
+       <% errors.forEach(error => { %>
+         <li><%= error.msg %></li>
+      <%  }) %>
+       </ul>
+      <% } %>
+<%# **************************************
+    Registration Form
+************************************* %>
+
 <div class="register-container">
+    <p>All Fields are Required</p>
     <form action="/account/register" method="POST">
         <label for="account_firstname">*First name</label>
-        <input type="text" id="account_firstname" name="account_firstname" required>
+        <input type="text" id="account_firstname" name="account_firstname" required value="<%= locals.account_firstname %>">
     
         <label for="account_lastname">*Last name</label>
-        <input type="text" id="account_lastname" name="account_lastname" required>
+        <input type="text" id="account_lastname" name="account_lastname" required value="<%= locals.account_lastname %>">
     
         <label for="account_email">*Email address</label>
-        <input type="email" id="account_email" name="account_email" required>
+        <input type="email" id="account_email" name="account_email" required value="<%= locals.account_email %>">
     
         <label for="account_password">*Password</label>
         <input type="password" id="account_password" name="account_password" 
                pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}" 
                title="Password must be at least 12 characters, include 1 uppercase letter, 1 number, and 1 special character."
-               required>
-    
+               required><p>Password must be at least 12 characters, include 1 uppercase letter, 1 number, and 1 special character.</p>
+               <label>
+        <button type="button" id="togglePassword"> Show Password</button>
+
         <button type="submit" class="register-btn">Register</button>
     </form>
 </div>
+<script src="/js/script.js"></script>

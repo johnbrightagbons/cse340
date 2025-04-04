@@ -62,7 +62,7 @@ nav ul li a {
   text-decoration: none; /* Removes underline */
 }
 
-nav ul li a:hover {
+nav a:hover {
   color: #080bf3; /* Changes color on hover */
 }
 
@@ -292,33 +292,18 @@ h1 {
  Inventory Items Display (Grid)
 ************************************* */
 .vehicle-container {
-  background-color: #fff; /* Sets background color to purple */
-  padding: 20px; /* Adds padding inside the box */
-  display: flex; /* Enables flexbox for centering */
-  justify-content: center; /* Centers content horizontally */
-  align-items: center; /* Centers content vertically */
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  max-width: 1200px;
-  margin: auto;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-  margin-top: 10px;
-  font-size: 1.2rem;
-  font-size: 1rem;
-  color: #666;
-  display: flex;
-  gap: 10px;
-  list-style: none;
+  background-color: #fff; /* White background */
+  padding: 20px; /* Adds padding inside the container */
+  display: grid; /* Enables grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 20px; /* Adds space between grid items */
+  max-width: 1200px; /* Restricts the container width */
+  margin: auto; /* Centers the container */
+  border-radius: 8px; /* Rounds the corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+  text-align: center; /* Centers text inside items */
+  color: #666; /* Neutral text color */
 }
-
 /* ===========================
    ERROR MESSAGE STYLING
    =========================== */
@@ -342,17 +327,20 @@ h1 {
 ************************************* */
 /* Vehicle Detail Page Styles */
 
-/* Container for the vehicle details */
 .vehicle-detail {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  font-size: 1em;
+  max-width: 800px; /* Restricts the width */
+  margin: 20px auto; /* Centers the container */
+  padding: 20px; /* Adds padding inside the container */
+  border: 1px solid #ccc; /* Adds a light border */
+  border-radius: 8px; /* Rounds the corners */
+  background-color: #f9f9f9; /* Light gray background */
+  display: grid; /* Enables grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 20px; /* Adds space between grid items */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+  font-size: 1rem; /* Sets a readable font size */
+  line-height: 1.5; /* Improves text readability */
 }
-
 /* ===========================
    LOGIN PAGE STYLING
    =========================== */
@@ -507,17 +495,36 @@ label {
   max-width: 108%;
 }
 
+#togglePassword {
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  border: none; /* Removes border */
+  padding: 10px 15px; /* Adds padding */
+  font-size: 14px; /* Sets font size */
+  margin-bottom: 15px; /* Adds space above button */
+  border-radius: 5px; /* Rounds the corners */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  transition: background-color 0.3s ease; /* Adds smooth hover effect */
+}
+
+#togglePassword:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
 /* Hover effect */
 .register-container button:hover {
   background-color: #0056b3; /* Darker blue on hover */
 }
 
 /* Flash message for errors */
-.flash-message {
+.flash-message, .notice {
   color: red; /* Displays messages in red */
   font-weight: bold; /* Stands out */
   text-align: center; /* Centers the message */
+  list-style: none;
 }
+
+
 
 /* Login link */
 .register-container p {
@@ -594,5 +601,26 @@ input:required:valid {
 
   .grid {
     grid-template-columns: repeat(4, 1fr);
+  }
+}
+/* Stacked layout for small screens */
+@media (max-width: 768px) {
+  .vehicle-container {
+    grid-template-columns: 1fr; /* Single column layout */
+  }
+
+  .vehicle-detail {
+    grid-template-columns: 1fr; /* Single column layout */
+  }
+}
+
+/* Two-column layout for medium screens */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .vehicle-container {
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+  }
+
+  .vehicle-detail {
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
   }
 }
