@@ -614,6 +614,24 @@ input:required:valid {
   }
 }
 
+/* Footer error message styling */
+.footer-error {
+  text-align: center;
+  padding: 10px;
+}
+
+.error-link {
+  color: #d9534f;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.error-link:hover {
+  color: #c9302c;
+  text-decoration: underline;
+}
+
 /* Two-column layout for medium screens */
 @media (min-width: 769px) and (max-width: 1024px) {
   .vehicle-container {

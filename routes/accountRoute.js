@@ -26,6 +26,16 @@ router.get(
   utilities.handleErrors(accountController.buildRegister)
 );
 
+/* *****************************
+Process the login attempt
+***************************** */
+// Deffault account management route
+// Default account management route
+router.get(
+  "/",
+  utilities.handleErrors(accountController.buildAccountManagement)
+);
+
 //  Router  to registration form
 router.post(
   "/register",
@@ -37,12 +47,12 @@ router.post(
 /* *****************************
 Process the login attempt
 ***************************** */
-// Route to process login attempt
 router.post(
   "/login",
-  regValidate.logInRules(), // Apply login validation rules
+  regValidate.logInRules(), // Apply validation rules
   regValidate.checkLoginData, // Check for validation errors
-  utilities.handleErrors(accountController.processLogin) // Handle login logic
+  utilities.handleErrors(accountController.accountLogin) // Handle login logic
 );
+
 // Export router
 module.exports = router;

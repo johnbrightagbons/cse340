@@ -1,0 +1,16 @@
+<% if message { %>
+    <div class="flash-message">
+        <p><%= message %></p>
+    </div>
+<% } %>
+
+if (errors && errors.length > 0) { %>
+    <ul class="notice">
+        <% errors.forEach(error => { %>
+            <li><%= error.msg %></li>)
+    </ul>
+<% }) %>
+
+<main>
+    <p>You're logged in</p>
+</main>

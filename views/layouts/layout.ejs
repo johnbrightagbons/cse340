@@ -13,9 +13,9 @@
 
     <footer>
         <%- include('../partials/footer') %>
-        <% if (message) { %>
+        <% if (typeof message !== 'undefined') { %>
             <div class="footer-error">
-                <p><%= message %></p>
+                <a href="#" class="error-link"><%= message %></a>
             </div>
         <% } %>
     </footer>

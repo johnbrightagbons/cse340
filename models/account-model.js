@@ -1,7 +1,6 @@
 // require the database > index file
 // and store it to a local "pool" variable
 const pool = require("../database/");
-
 const accountModel = {};
 
 /* *****************************
@@ -40,19 +39,18 @@ accountModel.checkExistingEmail = async function (account_email) {
   }
 };
 
-/* ***************************
- *  Get account by email
- *************************** */
-accountModel.getAccountByEmail = async function (email) {
+/* *************************************
+ * Return account data using email address
+ * ************************************* */
+accountModel.getAccountByEmail = async function (account_email) {
   try {
     const result = await pool.query(
-      "SELECT * FROM accounts WHERE account_email = $1",
-      [email]
+      "SELECT account_id, account_firstname, account_lastname, account_email, account_type, account_password FROM account WHERE account_email = $1",
+      [account_email]
     );
     return result.rows[0];
   } catch (error) {
-    console.error("Error fetching account by email:", error);
-    throw error;
+    return new Error("No matching email found");
   }
 };
 
