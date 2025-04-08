@@ -1,18 +1,14 @@
 <%# **************************************
     The Content Heading
 ************************************* %>
-<% if (title) { %>
-    <h1><%= title %></h1>
-<% } %>
+<h1><%= title %></h1>
 
 <%# **************************************
-    Display Flash Messages (if any)
+    Display Flash Messages
 ************************************* %>
-<% if (message) { %>
-    <div class="flash-message">
-        <p><%= message %></p>
-    </div>
-<% } %>
+<div class="flash-message">
+    <p><%= message %></p>
+</div>
 
 <%# **************************************
     Login Form

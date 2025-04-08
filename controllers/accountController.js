@@ -9,6 +9,10 @@ Delivering Login View
 ***************************** */
 async function buildLogin(req, res, next) {
   let nav = await utilities.getNav();
+  // Set initial flash message if none exists
+  if (!req.flash("message").length) {
+    req.flash("message", "Please log in");
+  }
   res.render("account/login", {
     title: "Login",
     nav,
@@ -46,9 +50,23 @@ async function handleLogin(req, res, next) {
       return res.redirect("/account/login");
     }
 
-    // If login is successful
-    req.flash("message", "Login successful!");
-    res.redirect("/");
+    // Generate a JWT token for the user
+    const accessToken = jwt.sign(
+      { account_id: account.account_id, account_email: account.account_email },
+      process.env.ACCESS_TOKEN_SECRET,
+      { expiresIn: "1h" }
+    );
+
+    // Set the token as a cookie
+    res.cookie("access_token", accessToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production", // Set to true in production
+      maxAge: 3600 * 1000, // 1 hour
+    });
+
+    // If login is successful redirect to managemnet view
+    req.flash("message", "4login successful");
+    res.redirect("/account/management");
   } catch (error) {
     console.error("Error during login:", error);
     req.flash("message", "An error occurred. Please try again.");
@@ -75,7 +93,7 @@ async function buildRegister(req, res, next) {
  ***************************** */
 async function buildAccountManagement(req, res) {
   let nav = await utilities.getNav();
-  res.render("account/accountManagement", {
+  res.render("account/management", {
     title: "Account Management",
     nav,
     message: req.flash("You're logged in"),
@@ -117,7 +135,7 @@ async function accountLogin(req, res) {
           maxAge: 3600 * 1000,
         });
       }
-      return res.redirect("/account/");
+      return res.redirect("/account/management");
     } else {
       req.flash(
         "message notice",
@@ -177,8 +195,27 @@ const registerAccount = async (req, res, next) => {
     );
 
     if (regResult.rowCount > 0) {
-      req.flash("message", "Registration successful! Please log in.");
-      return res.redirect("/account/login");
+      // Auto-login after registration
+      const accountData = await accountModel.getAccountByEmail(account_email);
+      delete accountData.account_password;
+      const accessToken = jwt.sign(
+        accountData,
+        process.env.ACCESS_TOKEN_SECRET,
+        { expiresIn: 3600 * 1000 }
+      );
+
+      if (process.env.NODE_ENV === "development") {
+        res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 });
+      } else {
+        res.cookie("jwt", accessToken, {
+          httpOnly: true,
+          secure: true,
+          maxAge: 3600 * 1000,
+        });
+      }
+
+      req.flash("message", "Registration successful!");
+      return res.redirect("/account/management");
     } else {
       throw new Error("Registration failed");
     }

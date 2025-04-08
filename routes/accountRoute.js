@@ -30,9 +30,10 @@ router.get(
 Process the login attempt
 ***************************** */
 // Deffault account management route
-// Default account management route
+// Default account route - redirect to login if not authenticated
 router.get(
   "/",
+  utilities.checkLogin,
   utilities.handleErrors(accountController.buildAccountManagement)
 );
 
@@ -52,6 +53,12 @@ router.post(
   regValidate.logInRules(), // Apply validation rules
   regValidate.checkLoginData, // Check for validation errors
   utilities.handleErrors(accountController.accountLogin) // Handle login logic
+);
+
+// Router to process the management view
+router.get(
+  "/management",
+  utilities.handleErrors(accountController.buildAccountManagement)
 );
 
 // Export router

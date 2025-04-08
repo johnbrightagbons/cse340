@@ -524,7 +524,13 @@ label {
   list-style: none;
 }
 
-
+/* Management View*/
+.account-management {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
 
 /* Login link */
 .register-container p {
