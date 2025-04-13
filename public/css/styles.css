@@ -524,39 +524,7 @@ label {
   list-style: none;
 }
 
-/* Management View*/
-.account-management {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-}
 
-/* Login link */
-.register-container p {
-  margin-top: 10px; /* Adds space above link */
-  font-size: 14px; /* Makes text readable */
-}
-
-.register-container a {
-  color: #007bff; /* Matches the button color */
-  text-decoration: none; /* Removes underline */
-}
-
-.register-container a:hover {
-  text-decoration: underline; /* Underlines on hover */
-}
-label {
-  margin-bottom: -10px; /* Reduces space between label and input */
-
-}
-input:required {
-  box-shadow: inset 5px 0 red; /* Red on the right when empty */
-}
-
-input:required:valid {
-  box-shadow: inset 5px 0 green; /* Green on the right when filled */
-}
 
 
 

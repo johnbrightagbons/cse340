@@ -58,14 +58,18 @@ async function handleLogin(req, res, next) {
     );
 
     // Set the token as a cookie
-    res.cookie("access_token", accessToken, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production", // Set to true in production
-      maxAge: 3600 * 1000, // 1 hour
-    });
+    if (process.env.NODE_ENV === "development") {
+      res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 });
+    } else {
+      res.cookie("jwt", accessToken, {
+        httpOnly: true,
+        secure: true,
+        maxAge: 3600 * 1000,
+      });
+    }
 
-    // If login is successful redirect to managemnet view
-    req.flash("message", "4login successful");
+    // If login is successful redirect to management view
+    req.flash("message", "Login successful");
     res.redirect("/account/management");
   } catch (error) {
     console.error("Error during login:", error);
@@ -92,64 +96,39 @@ async function buildRegister(req, res, next) {
  * Deliver Account Management View
  ***************************** */
 async function buildAccountManagement(req, res) {
-  let nav = await utilities.getNav();
-  res.render("account/management", {
-    title: "Account Management",
-    nav,
-    message: req.flash("You're logged in"),
-    errors: null,
-  });
-}
-
-/* *****************************
-Process Login request 
-* **************************** */
-async function accountLogin(req, res) {
-  let nav = await utilities.getNav();
-  const { account_email, account_password } = req.body; // Get email and password from request body
-  const accountData = await accountModel.getAccountByEmail(account_email);
-  if (!accountData) {
-    req.flash("notice", "Please check your credentials and try again.");
-    res.status(400).render("account/login", {
-      title: "Login",
-      nav,
-      errors: null,
-      account_email,
-    });
-    return;
-  }
   try {
-    if (await bcrypt.compare(account_password, accountData.account_password)) {
-      delete accountData.account_password;
-      const accessToken = jwt.sign(
-        accountData,
-        process.env.ACCESS_TOKEN_SECRET,
-        { expiresIn: 3600 * 1000 }
-      );
-      if (process.env.NODE_ENV === "development") {
-        res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 });
-      } else {
-        res.cookie("jwt", accessToken, {
-          httpOnly: true,
-          secure: true,
-          maxAge: 3600 * 1000,
-        });
-      }
-      return res.redirect("/account/management");
-    } else {
-      req.flash(
-        "message notice",
-        "Please check your credentials and try again."
-      );
-      res.status(400).render("account/login", {
-        title: "Login",
-        nav,
-        errors: null,
-        account_email,
-      });
+    let nav = await utilities.getNav();
+    const { buildClassificationList } = require("./invController");
+
+    // Get user data from JWT token
+    const token = req.cookies.jwt;
+    let user = null;
+    if (token) {
+      user = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
     }
+
+    // Get classification list with error handling
+    let classificationList;
+    try {
+      classificationList = await buildClassificationList();
+    } catch (err) {
+      console.error("Error getting classifications:", err);
+      classificationList =
+        "<select><option>Error loading classifications</option></select>";
+    }
+
+    res.render("account/accountManagement", {
+      title: "Account Management",
+      nav,
+      message: req.flash("message") || "You're logged in!",
+      classificationList,
+      user, // Pass user data to view
+      errors: null,
+    });
   } catch (error) {
-    throw new Error("Access Forbidden");
+    console.error("Error in buildAccountManagement:", error);
+    req.flash("message", "Error loading account management");
+    res.redirect("/account/management");
   }
 }
 
@@ -231,7 +210,6 @@ module.exports = {
   buildLogin,
   handleLogin,
   buildRegister,
-  accountLogin,
   buildAccountManagement,
   registerAccount,
 };

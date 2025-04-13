@@ -1,0 +1,28 @@
+ <% if (title) { %>
+    <h1><%= title %></h1>
+    <% } %>
+
+    <%- messages() %>
+
+    <div class="management-links">
+        <a href="/inv/add-classification">Add New Classification</a>
+        
+        <a href="/inv/add-vehicle">Add New Vehicle</a>
+    </div>
+
+    <h2>Management Inventory</h2>
+<p>Select a classification from the list to see the items belonging to the classification.</p>
+
+<!-- Render the classification dropdown -->
+<%- classificationSelect %>
+
+<!-- Empty table for inventory display -->
+<table id="inventoryDisplay"></table>
+
+<!-- Message for users with JavaScript disabled -->
+<noscript>JavaScript must be enabled to use this page.</noscript>
+
+<link rel="stylesheet" href="/css/inventory.css">
+
+</body>
+</html>

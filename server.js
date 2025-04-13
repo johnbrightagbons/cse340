@@ -77,8 +77,9 @@ app.use("/inv", inventoryRoute);
 app.use("/account/", require("./routes/accountRoute"));
 
 /* ***********************
- * Account Register
+ * Vehicle Management Routes
  *************************/
+app.use("/inv", inventoryRoute);
 
 /* ***********************
  * File not Found Route

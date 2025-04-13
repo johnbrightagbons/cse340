@@ -11,7 +11,7 @@ Util.getNav = async function () {
   console.log(data);
   let list = "<ul>";
   list += '<li><a href="/" title="Home page">Home</a></li>';
-  data.rows.forEach((row) => {
+  data.forEach((row) => {
     list += "<li>";
     list +=
       '<a href="/inv/type/' +
@@ -136,16 +136,17 @@ Util.checkJWTToken = (req, res, next) => {
       process.env.ACCESS_TOKEN_SECRET,
       function (err, accountData) {
         if (err) {
-          req.flash("Please login to access this page.");
+          req.flash("Notice", "Please login to access this page.");
           res.clearCookie("jwt");
           return res.redirect("/account/login");
         }
-        res.locals.accountData = accountData; // Store account data in res.locals for use in views
-        res.locals.loggedin = 1;
+        res.locals.accountData = accountData;
+        res.locals.loggedin = true;
         next();
       }
     );
   } else {
+    res.locals.loggedin = false;
     next();
   }
 };
@@ -160,6 +161,17 @@ Util.checkLogin = (req, res, next) => {
     req.flash("Notice", "Please Login to access this page.");
     res.redirect("/account/login");
   }
+};
+
+/* **************************************
+ * Build classification select list HTML
+ ************************************ */
+Util.buildClassificationList = async function (classifications) {
+  let list = '<option value="">Choose a Classification</option>';
+  classifications.rows.forEach((row) => {
+    list += `<option value="${row.classification_id}">${row.classification_name}</option>`;
+  });
+  return list;
 };
 
 module.exports = Util;
