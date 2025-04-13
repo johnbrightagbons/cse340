@@ -3,23 +3,22 @@
 ************************************* %>
 <% if (title) { %>
     <h1><%= title %></h1>
-<% } else { %>
 <% } %>
+
 <%# **************************************
     Display Flash Messages (if any)
 ************************************* %>
-
 <% if (errors) { %>
-        <ul class="notice">
-       <% errors.forEach(error => { %>
-         <li><%= error.msg %></li>
-      <%  }) %>
-       </ul>
-      <% } %>
+    <ul class="notice">
+        <% errors.forEach(error => { %>
+            <li><%= error.msg %></li>
+        <% }) %>
+    </ul>
+<% } %>
+
 <%# **************************************
     Registration Form
 ************************************* %>
-
 <div class="register-container">
     <p>All Fields are Required</p>
     <form action="/account/register" method="POST">
@@ -36,10 +35,13 @@
         <input type="password" id="account_password" name="account_password" 
                pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}" 
                title="Password must be at least 12 characters, include 1 uppercase letter, 1 number, and 1 special character."
-               required><p>Password must be at least 12 characters, include 1 uppercase letter, 1 number, and 1 special character.</p>
-               <label>
-        <button type="button" id="togglePassword"> Show Password</button>
+               required>
+        <p>Password must be at least 12 characters, include 1 uppercase letter, 1 number, and 1 special character.</p>
+        
+        <!-- Toggle Password Visibility -->
+        <button type="button" id="togglePassword">Show Password</button>
 
+        <!-- Submit Button -->
         <button type="submit" class="register-btn">Register</button>
     </form>
 </div>
