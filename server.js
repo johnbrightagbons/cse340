@@ -75,7 +75,10 @@ app.use("/inv", inventoryRoute);
  * Account Routes
  *************************/
 app.use("/account/", require("./routes/accountRoute"));
-
+//app.post("/account/login", (req, res) => {
+//const errors = req.flash("error"); // Example: Fetch errors from flash messages
+// res.render("account/login", { errors });
+//});
 /* ***********************
  * Vehicle Management Routes
  *************************/

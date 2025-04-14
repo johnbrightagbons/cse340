@@ -508,22 +508,32 @@ label {
 }
 
 #togglePassword:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #020109; /* Darker blue on hover */
 }
 
 /* Hover effect */
 .register-container button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #020109; /* Darker blue on hover */
 }
 
 /* Flash message for errors */
-.flash-message, .notice {
-  color: red; /* Displays messages in red */
-  font-weight: bold; /* Stands out */
+.flash-message, .notice, .error-messages {
+  color: rgba(255, 0, 0, 0.836); /* Displays messages in red */
+  font-weight: bold; /* Makes the message stand out */
   text-align: center; /* Centers the message */
-  list-style: none;
+  padding: 10px; /* Adds spacing inside the message box */
+  margin: 10px auto; /* Centers the message box and adds spacing */
+  border: 1px solid rgba(255, 0, 0, 0.5); /* Adds a subtle border */
+  border-radius: 5px; /* Rounds the corners */
+  background-color: #ffe6e6; /* Light red background for better visibility */
 }
 
+/* Remove bullets specifically for lists inside error messages */
+.flash-message ul, .notice ul, .error-messages ul {
+  list-style: none; /* Removes bullet points */
+  padding: 0; /* Removes default padding */
+  margin: 0; /* Removes default margin */
+}
 
 
 

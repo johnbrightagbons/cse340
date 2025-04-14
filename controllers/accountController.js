@@ -17,6 +17,7 @@ async function buildLogin(req, res, next) {
     title: "Login",
     nav,
     message: req.flash("message"),
+    errors: null,
   });
 }
 
