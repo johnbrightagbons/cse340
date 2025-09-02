@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head')%> <%# The head partial  %>
+
+<body>
+    <div id="wapper">
+        <%-  include('../partials/header') %> <%# The header partial  %>
+        <%- include('../partials/navigation') %> <%# The navigation partial  %>
+
+        <main>
+            <%- body %> <%# This is where the main content will be injected  %>
+        </main>
+
+
+        <%- include('../partials/footer') %> <%# The footer partial  %> 
+    </div>
+</body>
+</html>
