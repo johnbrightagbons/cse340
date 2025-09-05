@@ -4,3 +4,360 @@
 *:after {
   box-sizing: border-box;
 }
+
+/* *****************************
+Layout Wapper Styles
+****************************** */
+#wapper {
+  max-width: 1200px;        /* cap width at 1200px on large monitors */
+  
+  margin: 0 auto;           /* center horizontally */
+  padding: 1.5rem 20px;     /* inner spacing */
+  box-sizing: border-box;   /* include padding + border inside width */
+  position: relative;       /* allow overlay/absolute children */
+  background-color: #faf7f7; /* light grey background */
+  border: 3px solid #009cde; /* sky blue border */
+  overflow-x: hidden;       /* prevent horizontal scrollbars */
+}
+
+
+/* *****************************
+Reset Defaults
+****************************** */
+body {
+  background-image: url('/images/site/small_check.png');
+  background-size: cover; /* Cover the Screen*/
+  background-repeat: no-repeat; /*Prevent Tilling*/
+  background-position: center; /*Center the Image*/
+  background-attachment: fixed; /*Fix the Image in Place*/
+  font-family: Arial, Helvetica, sans-serif; /*Set the Default Font*/
+  margin: 0; /*Remove Default Margin*/
+  padding: 0; /*Remove Default Padding*/
+  position: relative; /*Set Position to Relative*/
+}
+
+
+/* *****************************
+Heeader Styles
+****************************** */
+#top-header {
+  display: flex; /* Enables flexbox for alignment */
+  justify-content: space-between; /* Pushes content to both ends */
+  align-items: center; /* Aligns items vertically */
+  padding: 15px 20px; /* Adds spacing inside the header */
+  color: white; /* Sets text color to white */
+}
+
+/* *****************************
+Index Page Styles
+****************************** */
+.hero, .reviews-upgrades {
+  position: relative; /*Set Position to Relative to allow layering*/
+  z-index: 10; /* Pushes contents above background*/
+  background-color: rgb(250, 247, 247); /*Light Grey Background with Opacity*/  
+  overflow: hidden; /*Prevent Overflow*/
+}
+
+/* *****************************
+Navigation Bar Style
+****************************** */
+nav { 
+  background-color: black; /* Dark Background for Contrast */
+  padding: 10px; /* Padding around the nav */
+  display: flex; /* Flexbox for layout */
+  justify-content: center; /* centres the navigation bar */
+  color: white;
+  font-size: 1rem;
+}
+
+nav ul {
+  list-style: none; /* Removes the default bullets */
+  display: flex; /* Uses flexbox for layout */
+  flex-direction: row; /* Arranges the nav button horizontally */
+  align-items: center; /* Aligns items vertically in the centre */
+  justify-content: space-between; /* Places items evenly */
+  padding: 0; /* Removes default padding */
+  margin: 0; /* Removes default margin */
+  width: 80%; /* Controls width to maintain spacing */
+}
+
+nav ul li {
+  padding: 10px 20px; /* Adds spacing around the text */
+}
+
+nav ul li a {
+  color: white !important; /* Sets text color to white */
+  font-size: 1.5em; /* Increases font size */
+  font-weight: bold; /* Makes text bold */
+  padding: 10px 20px; /* Adds spacing around the text */
+  text-align: center; /* Centers text */
+  text-decoration: none; /* Removes underline */
+}
+
+nav a:hover {
+  color: #080bf3; /* Changes color on hover */
+}
+
+/* *****************************
+Hero Section Styles
+****************************** */
+.hero {
+  position: relative; /*Set Position to Relative, enabling absolute positioning for each child elements */
+  text-align: center; /*Center the Text*/
+  display: flex; /*Use Flexbox for Layout*/
+  flex-direction: column; /*Stack Elements Vertically*/
+  align-items: center; /*Center Elements Horizontally*/
+}
+
+.hero-img-container {
+  position: relative; /* Allows absolute positioning of child elements */
+  display: inline-block; /* Allows the image to be inline and positioned */
+  
+}
+
+.hero img {
+  max-width: 100%; /* Ensures the image is responsive */
+  height: auto; /* Maintains aspect ratio */
+  display: block; /* Centers image inside its container */
+  margin: auto; /* Aligns the image horizontally */
+}
+
+.hero h2 {
+  font-size: 2rem; /* Increases the font size */
+  margin-right: 220px; /* Adds space to the right of the heading */
+}
+
+/* *****************************
+Car Information Section Styles
+****************************** */
+
+.car-information {
+  position: absolute;               /* Overlay on the image */
+  bottom: 20%;                         /* Always 20% from the top */
+  right: 60%;                        /* Always 30% from the left */
+  background-color: rgba(255, 255, 255, 0.6); /* White with transparency */
+  padding: 15px;                    /* Inner spacing */
+  border-radius: 8px;               /* Rounded corners */
+  text-align: left;                 /* Left-aligned text */
+  z-index: 20;                      /* Stays on top */
+}
+
+
+
+.car-information h3 {
+  color: #009cde; /* Set colour sky blue */
+  font-size: 1.8rem; /* Increases the font size */
+  font-weight: bold; /* make the text bold */
+  margin: 0 0 1rem 0; /* Adds space below the heading */
+}
+
+
+.car-information ul {
+  list-style: none; /* Removes bullet points */
+  padding: 0; /* Removes default padding */
+  color: #009cde; /* Sky blue text for consistency */
+  font-size: 1.2em; /* Adjusts size for readability */
+}
+
+.car-information button:hover {
+  background-color: #0077b6; /* Darker blue shade when hovered */
+}
+
+
+/* ***************************************
+Car Button Styles
+*************************************** */
+.car-information button {
+  background-color: #009cde; /* Sky blue background */
+  color: black; /* Black text for contrast */
+  padding: 10px 20px; /* Adds space inside the button */
+  border: none; /* Removes default border */
+  border-radius: 5px; /* Soften the corners of the button */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  font-size: 1.2em; /* Increases the font size */
+  font-weight: bold; /* Makes the text bold */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+
+/* **************************************
+Container for reviews and upgrades
+*************************************** */
+.reviews-upgrades {
+  display: flex; /* Allow fixed position */
+  flex-direction: row; /* Arrange sections side by side */
+  gap: 2rem; /* Adds spacing between the two sections */
+  padding: 20px; /* Adds padding around the container */
+  align-items: stretch; /* Ensures both sections are the same height */
+  justify-content: space-between;
+}
+.reviews, .upgrades {
+  flex: 1 1 0; /* Takes up equal space */
+  min-width: 0; /* Prevents overflow */
+  max-width: 48%;   /* Limits maximum width */
+  padding: 1rem 1.5rem;  /* Adds spacing */
+  border-radius: 10px; /* Softens edges */
+  display: flex; /* Enables flexbox */
+  flex-direction: column; /* Stacks content vertically */
+  justify-content: center; /* Centers content vertically */
+}
+.upgrades {
+  padding: 20px; /* Adds space inside */
+  border-radius: 5px; /* Softens edges */
+  text-align: center; /* Centers content */
+  
+}
+
+/* Styles for each upgrade item */
+.upgrade-item {
+  background-color: #009cde; /* Sky blue background */
+  padding: 10px; /* Adds spacing */
+  border-radius: 5px; /* Softens edges */
+  text-align: center; /* Centers text */
+  display: flex; /* Enables flexbox within grid */
+  flex-direction: column; /* Stacks content vertically */
+  align-items: center; /* Centers items */
+  justify-content: center; /* Ensures even spacing */
+}
+
+/* Styling for images inside upgrade items */
+.upgrade-item img {
+  max-width: 80px; /* Limits width */
+  height: auto; /* Maintains aspect ratio */
+  border-radius: 5px; /* Softens edges */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow */
+}
+
+/* Styling for upgrade text */
+.upgrade-item p {
+  font-size: 1.1em; /* Adjusts text size */
+  color: rgb(17, 20, 26); /* High contrast */
+  margin-top: 5px; /* Adds space above text */
+  font-weight: bold; /* Emphasizes text */
+}
+
+/* Creates a 2x2 grid layout for upgrades */
+.grid {
+  display: grid; /* Enables grid layout */
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  gap: 15px; /* Adds space between grid items */
+  justify-content: center; /* Centers the grid */
+  align-items: center; /* Aligns items properly */
+}
+
+
+/* Styling for images inside upgrade items */
+.upgrade-item img {
+  max-width: 80px; /* Limits width */
+  height: auto; /* Maintains aspect ratio */
+  border-radius: 5px; /* Softens edges */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow */
+}
+
+.reviews {
+  flex: 1; /* allows it to share space if in a flex container */
+  padding: 1.5rem; /* consistent spacing */
+  text-align: left; /* left-align text */
+  
+}
+
+.reviews h3 {
+  color: black; /* black for readability */
+  font-size: 1.8rem; /* good size for headings */
+  font-weight: bold;
+  margin: 0 0 1rem 0; /* space below, no extra space above */
+}
+
+.reviews li {
+  margin-bottom: 0.5rem; /* spacing between reviews */
+  font-size: 1rem; /* keep reviews readable */
+  color: black; /* softer gray for text */
+  line-height: 1.1; /* improve readability */
+}
+
+
+/* *****************************
+Footer Styles
+****************************** */
+footer {
+  margin: 0;  /* Removes default margin */
+  font-size: 1rem; /* Sets a base font size */
+}
+
+
+
+
+
+/* *****************************
+Responsive Design
+****************************** */
+@media (max-width: 768px) {
+  .checkered-border { 
+    padding: 10px; /* Reduce padding for smaller screens */
+  }
+
+
+  
+  .hero h2 {
+    font-size: 2rem; /* Adjust font size for smaller screens */
+  }
+
+  .hero {
+    flex-direction: column; /* Stack elements vertically */
+  }
+  
+  .reviews-upgrades {
+    flex-direction: column; /* Stack sections vertically */
+    gap: 1.5rem; /* Reduce gap between sections */
+    padding: 1rem; /* Reduce padding */
+  }
+  
+  .grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 0.8rem; /* Reduce gap between items */
+  }
+  
+  .upgrade-item {
+    padding: 0.8rem; /* Reduce padding */
+  }
+  
+  .upgrade-item img {
+    width: 60px; /* Reduce image size */
+    height: 60px; /* Maintain aspect ratio */
+  }
+  
+  .upgrade-item p {
+    font-size: 0.9rem; /* Reduce text size */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h2 {
+    font-size: 1.5rem; /* Further adjust font size */
+  }
+  
+  #top-header {
+    flex-direction: column; /* Stack header elements vertically */
+    align-items: flex-start; /* Align items to the start */
+    padding: 10px; /* Add padding */
+    width: 100%; /* Full width */
+  }
+  .car-information h3 {
+    font-size: 1.5rem; /* Adjust heading size */
+  }
+  
+  .upgrades h3,
+  .reviews h3 {
+    font-size: 1.5rem; /* Adjust heading size */
+  }
+  
+  
+  .upgrade-item { 
+    padding: 1rem; /* Increase padding for better touch targets */
+  }
+  
+  .upgrade-item img {
+    width: 80px; /* Increase image size */
+    height: 80px; /* Maintain aspect ratio */
+  } 
+}
