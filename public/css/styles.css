@@ -286,18 +286,82 @@ footer {
 
 
 
+/* *****************************
+   Classification Style
+   This CSS controls how the inventory grid
+   and its items are displayed
+****************************** */
+/* Target the wrapper around the grid */
+.inventory-grid {
+  display: flex;   /* Use CSS Grid layout */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Creates responsive columns that shrink/grow, minimum 250px */
+  gap: 1rem;       /* Adds spacing between grid items */
+  padding: 1rem;   /* Adds inner spacing inside the grid container */
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: center;     /* center vertically */
+  min-height: 80vh;        /* take up most of the screen height */
+  list-style:  none; /*Removes the bullets*/
+}
+
+/* Style each individual item inside the grid 
+   Works whether items are <li> or <div> */
+.inventory-grid li, 
+.inventory-grid div {
+  background: #f8f9fa;    /* Light background color for items */
+  border: 1px solid #ddd; /* Subtle gray border */
+  border-radius: 8px;     /* Rounded corners */
+  padding: 1rem;          /* Space inside each item */
+  text-align: center;     /* Center text horizontally */
+  transition: transform 0.2s ease; /* Smooth animation when hovered */
+}
+
+/* Hover effect for grid items */
+.inventory-grid li:hover, 
+.inventory-grid div:hover {
+  transform: scale(1.05); /* Slightly enlarge item when hovered */
+  background: #e9ecef;    /* Change background on hover */
+}
+
+
+/* *****************************
+   Vehicle Details Sttyle
+****************************** */
+.vehicle-detail {
+  display: flex;       /* Places the image and details side by side */
+  gap: 2rem;           /* Adds space between the image and the details */
+  margin-top: 1rem;    /* Adds space above the whole section */
+}
+
+/* Styles for the vehicle image */
+.vehicle-detail img {
+  max-width: 400px;    /* Ensures image doesn’t get too large */
+  border-radius: 8px;  /* Gives the image slightly rounded corners */
+}
+
+/* Styles for the details list */
+.vehicle-detail ul {
+  list-style: none;    /* Removes default bullet points */
+  padding: 0;          /* Removes default padding from the list */
+}
+
+/* Styles for each detail item */
+.vehicle-detail li {
+  margin-bottom: 0.5rem; /* Adds space between each list item */
+}
+
 
 
 /* *****************************
 Responsive Design
 ****************************** */
-@media (max-width: 768px) {
+
+/* ===== Tablet and smaller (≤768px) ===== */
+@media screen and (max-width: 768px) {
   .checkered-border { 
     padding: 10px; /* Reduce padding for smaller screens */
   }
 
-
-  
   .hero h2 {
     font-size: 2rem; /* Adjust font size for smaller screens */
   }
@@ -322,42 +386,86 @@ Responsive Design
   }
   
   .upgrade-item img {
-    width: 60px; /* Reduce image size */
-    height: 60px; /* Maintain aspect ratio */
+    width: 60px;
+    height: 60px;
   }
   
   .upgrade-item p {
-    font-size: 0.9rem; /* Reduce text size */
+    font-size: 0.9rem;
+  }
+
+  /* ===== Classification Grid ===== */
+  .inventory-grid {
+    display: grid;                  /* use grid properly */
+    grid-template-columns: 1fr;     /* stack items in one column */
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+
+  .inventory-grid li,
+  .inventory-grid div {
+    padding: 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  /* ===== Vehicle Detail Layout ===== */
+  .vehicle-detail {
+    flex-direction: column;       /* stack image and info vertically */
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .vehicle-detail img {
+    max-width: 90%;
+    height: auto;
+  }
+
+  .vehicle-detail ul {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .vehicle-detail li {
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+  }
+
+  /* ===== General Adjustments ===== */
+  header h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  nav {
+    font-size: 0.9rem;
   }
 }
 
-@media (max-width: 480px) {
+/* ===== Mobile (≤480px) ===== */
+@media screen and (max-width: 480px) {
   .hero h2 {
-    font-size: 1.5rem; /* Further adjust font size */
+    font-size: 1.5rem;
   }
   
   #top-header {
-    flex-direction: column; /* Stack header elements vertically */
-    align-items: flex-start; /* Align items to the start */
-    padding: 10px; /* Add padding */
-    width: 100%; /* Full width */
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    width: 100%;
   }
-  .car-information h3 {
-    font-size: 1.5rem; /* Adjust heading size */
-  }
-  
+
+  .car-information h3,
   .upgrades h3,
   .reviews h3 {
-    font-size: 1.5rem; /* Adjust heading size */
+    font-size: 1.5rem;
   }
   
-  
   .upgrade-item { 
-    padding: 1rem; /* Increase padding for better touch targets */
+    padding: 1rem; /* bigger touch targets */
   }
   
   .upgrade-item img {
-    width: 80px; /* Increase image size */
-    height: 80px; /* Maintain aspect ratio */
+    width: 80px;
+    height: 80px;
   } 
 }
