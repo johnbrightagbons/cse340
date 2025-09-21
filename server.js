@@ -13,7 +13,7 @@ const static = require("./routes/static");
 const baseController = require("./controllers/baseController"); // require statement to bring the base controller into scope
 const inventoryRoute = require("./routes/inventoryRoute"); // require inventory routes
 const utilities = require("./utilities");
-
+const errorRoutes = require("./routes/errorRoute");
 /* ***********************
  * View Engine and Templates
  *************************/
@@ -31,6 +31,9 @@ app.get("/", utilities.handleErrors(baseController.buildHome)); // Render the in
 
 // Inventory Routes
 app.use("/inv", inventoryRoute);
+
+// Error Route
+app.use("/", errorRoutes);
 
 /* ***********************
  * File not Found Route

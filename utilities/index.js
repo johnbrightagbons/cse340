@@ -14,7 +14,7 @@ const Util = {}; // creates an empty Util object
 Util.getNav = async function (req, res, next) {
   let data = await invModel.getClassifications(); // calls the getClassifications() function from the inventory-model file and stores the returned resultset into the data variable
   let list = "<ul>"; // creates a JavaScript variable named list and assigns a string to it
-  list += '<li><a href="/" title="Home page">Home</a.><li>';
+  list += '<li><a href="/" title="Home page">Home</a><li>';
   data.rows.forEach((row) => {
     list += "<li>";
     list +=

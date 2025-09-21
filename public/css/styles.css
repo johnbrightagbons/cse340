@@ -331,12 +331,14 @@ footer {
   display: flex;       /* Places the image and details side by side */
   gap: 2rem;           /* Adds space between the image and the details */
   margin-top: 1rem;    /* Adds space above the whole section */
+  
 }
 
 /* Styles for the vehicle image */
 .vehicle-detail img {
-  max-width: 400px;    /* Ensures image doesn’t get too large */
+  max-width: 100%;    /* Ensures image doesn’t get too large */
   border-radius: 8px;  /* Gives the image slightly rounded corners */
+  height: auto;
 }
 
 /* Styles for the details list */
@@ -401,6 +403,9 @@ Responsive Design
     gap: 1rem;
     padding: 0.5rem;
   }
+.inventory-detail {
+    display: block;
+  }
 
   .inventory-grid li,
   .inventory-grid div {
@@ -440,6 +445,7 @@ Responsive Design
     font-size: 0.9rem;
   }
 }
+
 
 /* ===== Mobile (≤480px) ===== */
 @media screen and (max-width: 480px) {
