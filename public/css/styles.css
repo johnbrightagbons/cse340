@@ -322,23 +322,40 @@ footer {
   transform: scale(1.05); /* Slightly enlarge item when hovered */
   background: #e9ecef;    /* Change background on hover */
 }
+/* Inventory detail layout */
+.inventory-detail {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+  align-items: start;
+}
 
+/* Images should shrink nicely */
+.inventory-detail img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
 /* *****************************
    Vehicle Details Sttyle
 ****************************** */
 .vehicle-detail {
-  display: flex;       /* Places the image and details side by side */
-  gap: 2rem;           /* Adds space between the image and the details */
-  margin-top: 1rem;    /* Adds space above the whole section */
-  
+  display: grid;       /* Places the image and details side by side */
+  /*gap: 2rem;           /* Adds space between the image and the details */
+  /*margin-top: 1rem;    /* Adds space above the whole section */
+  grid-template-columns: 1fr 1fr;
+  padding: 5px;
+  max-width: 800px;
+  margin: auto;
+  align-items: center;
 }
 
 /* Styles for the vehicle image */
 .vehicle-detail img {
-  max-width: 100%;    /* Ensures image doesn’t get too large */
+  width: 200%;
   border-radius: 8px;  /* Gives the image slightly rounded corners */
-  height: auto;
+  display: flex;
 }
 
 /* Styles for the details list */
@@ -350,6 +367,9 @@ footer {
 /* Styles for each detail item */
 .vehicle-detail li {
   margin-bottom: 0.5rem; /* Adds space between each list item */
+  font-size: 1.1rem;
+  text-align: center;     /* Centers the text inside */
+  padding: 20px;
 }
 
 
@@ -359,7 +379,7 @@ Responsive Design
 ****************************** */
 
 /* ===== Tablet and smaller (≤768px) ===== */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   .checkered-border { 
     padding: 10px; /* Reduce padding for smaller screens */
   }
@@ -403,9 +423,7 @@ Responsive Design
     gap: 1rem;
     padding: 0.5rem;
   }
-.inventory-detail {
-    display: block;
-  }
+
 
   .inventory-grid li,
   .inventory-grid div {
@@ -421,7 +439,7 @@ Responsive Design
   }
 
   .vehicle-detail img {
-    max-width: 90%;
+    max-width: 100%;
     height: auto;
   }
 
