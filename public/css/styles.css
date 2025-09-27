@@ -374,6 +374,220 @@ footer {
 
 
 
+/* ===========================
+   LOGIN PAGE STYLING
+   =========================== */
+
+/* Login container */
+.login-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  color: white;
+  background-color: #04011b;
+  border-radius: 8px;
+  box-shadow: 0 8px 8px #0000001a;
+  align-items: center;
+  
+}
+
+/* Title */
+.login-container h1 {
+  font-size: 40px;
+  color: wheat;
+  margin-bottom: 60px;
+  text-align: center;
+
+}
+
+/* Form styles */
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 2rem;
+}
+
+/* Input fields */
+.login-container input {
+  padding: 12px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
+}
+
+/* Focus effect on inputs */
+.login-container input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Submit button */
+.login-container button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 17px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  max-width: 100%;
+  
+}
+
+/* Hover effect */
+.login-container button:hover {
+  background-color: #0056b3;
+}
+
+
+label {
+  margin-bottom: -10px; /* Reduces space between label and input */
+  }
+
+/* Registration link */
+.login-container p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.login-container a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.login-container a:hover {
+  text-decoration: underline;
+}
+
+
+/* ===========================
+   Notice Styling
+   =========================== */
+/* Flash Message*/
+.notice {
+  text-align: center;
+  font-size: 1.2rem;
+  list-style-type: none;
+  background: #f8d7da;
+  color: #721c24;
+  padding: 5px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  
+}
+
+
+
+/* ===========================
+   REGISTER PAGE STYLING
+   =========================== */
+
+/* Register container */
+.register-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  color: white;
+  background-color: #04011b;
+  border-radius: 8px;
+  box-shadow: 0 8px 8px #0000001a;
+  align-items: center;
+  
+}
+
+/* Title */
+.register-container h1 {
+  font-size: 40px;
+  color: wheat;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* Form styling */
+.register-container form {
+  display: flex; /* Enables flexbox */
+  flex-direction: column; /* Stacks inputs vertically */
+  gap: 10px; /* Adds spacing between inputs */
+  margin-right: 2rem; /* Aligns form properly */
+}
+
+/* Input fields */
+.register-container input {
+  padding: 12px; /* Increases field height */
+  border: 1px solid #cccccc; /* Adds a light border */
+  border-radius: 4px; /* Rounds input edges */
+  font-size: 16px; /* Increases readability */
+  width: 100%; /* Makes inputs responsive */
+}
+
+/* Focus effect on inputs */
+.register-container input:focus {
+  border-color: #007bff; /* Highlights input on focus */
+  outline: none; /* Removes default outline */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Adds glow effect */
+}
+
+/* Submit button */
+.register-container button {
+  background-color: #007bff; /* Primary blue color */
+  color: white; /* White text */
+  border: none; /* Removes border */
+  padding: 12px; /* Increases button size */
+  font-size: 16px; /* Makes text readable */
+  border-radius: 6px; /* Rounds button corners */
+  cursor: pointer; /* Changes cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition effect */
+  width: 108%; /* Expands button */
+  max-width: 108%;
+}
+
+.register-container p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #05FF05;
+}
+
+#togglePassword {
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  border: none; /* Removes border */
+  padding: 10px 15px; /* Adds padding */
+  font-size: 14px; /* Sets font size */
+  margin-bottom: 15px; /* Adds space above button */
+  border-radius: 5px; /* Rounds the corners */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  transition: background-color 0.3s ease; /* Adds smooth hover effect */
+}
+
+#togglePassword:hover {
+  background-color: #2d07e7; /* Darker blue on hover */
+}
+
+/* Hover effect */
+.register-container button:hover {
+  background-color: #2d07e7; /* Darker blue on hover */
+  
+}
+
+/* Invalid input: red strip on the left */
+input:required:invalid {
+  border-left: 5px solid #dc3545;
+  padding-left: 8px; /* keep text away from strip */
+}
+
+/* Valid input: green strip on the left */
+input:required:valid {
+  border-left: 5px solid #28a745;
+  padding-left: 8px;
+}
+
+
+
+
 /* *****************************
 Responsive Design
 ****************************** */

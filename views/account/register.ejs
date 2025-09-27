@@ -1,0 +1,68 @@
+<%# **************************************
+    Display Flash Messages (if any)
+************************************* %>
+<%- messages() %>
+
+<%# **************************************
+    Display Error Messages (if any)
+************************************* %>
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
+<%# **************************************
+    The Content Heading
+************************************* %>
+<div class="register-container">
+<h1><%= title %></h1>
+
+<%# **************************************
+    Registration Form
+************************************* %>
+<div class="register-container">
+    <p>All Fields are Required</p>
+    <form action="/account/register" method="POST">
+        <label for="account_firstname">*First name</label>
+        <input type="text" id="account_firstname" name="account_firstname" required value="<%= locals.account_firstname %>">
+    
+        <label for="account_lastname">*Last name</label>
+        <input type="text" id="account_lastname" name="account_lastname" required value="<%= locals.account_lastname %>">
+    
+        <label for="account_email">*Email address</label>
+        <input type="email" id="account_email" name="account_email" required value="<%= locals.account_email %>">
+    
+        <label for="account_password">*Password</label>
+        <input type="password" id="account_password" name="account_password" 
+               pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}" 
+               title="Password must be at least 12 characters, include 1 uppercase letter, 1 number, and 1 special character."
+               required>
+        <p>Password must be at least 12 characters, include 1 uppercase letter, 1 number, and 1 special character.</p>
+        
+        <!-- Toggle Password Visibility -->
+        <button type="button" id="togglePassword">Show Password</button>
+
+        <!-- Submit Button -->
+        <button type="submit" class="register-btn">Register</button>
+    </form>
+</div>
+
+<script>
+  // Get the toggle button and password input
+  const togglePassword = document.getElementById("togglePassword");
+  const passwordField = document.getElementById("account_password");
+
+  // Add a click event to toggle the password type
+  togglePassword.addEventListener("click", () => {
+    if (passwordField.type === "password") {
+      passwordField.type = "text";
+      togglePassword.textContent = "Hide Password"; // Change button text
+    } else {
+      passwordField.type = "password";
+      togglePassword.textContent = "Show Password";
+    }
+  });
+</script>

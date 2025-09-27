@@ -14,6 +14,41 @@ const baseController = require("./controllers/baseController"); // require state
 const inventoryRoute = require("./routes/inventoryRoute"); // require inventory routes
 const utilities = require("./utilities");
 const errorRoutes = require("./routes/errorRoute");
+const session = require("express-session");
+const pool = require("./database/");
+const accountController = require("./controllers/accountController");
+const accountRoute = require("./routes/accountRoute");
+const bodyParser = require("body-parser");
+
+/* ***********************
+ * Middleware
+ * ************************/
+app.use(
+  session({
+    store: new (require("connect-pg-simple")(session))({
+      createTableIfMissing: true,
+      pool,
+    }),
+    secret: process.env.SESSION_SECRET,
+    resave: true,
+    saveUninitialized: true,
+    name: "sessionId",
+  })
+);
+
+// Body-Parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
+/* ***********************
+ * Flash Message Middleware
+ * ************************/
+app.use(require("connect-flash")());
+app.use(function (req, res, next) {
+  res.locals.messages = require("express-messages")(req, res);
+  next();
+});
+
 /* ***********************
  * View Engine and Templates
  *************************/
@@ -31,6 +66,9 @@ app.get("/", utilities.handleErrors(baseController.buildHome)); // Render the in
 
 // Inventory Routes
 app.use("/inv", inventoryRoute);
+
+// Account Login Routes
+app.use("/account", accountRoute);
 
 // Error Route
 app.use("/", errorRoutes);
