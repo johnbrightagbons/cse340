@@ -118,6 +118,26 @@ Util.formatVehicleHtml = function (vehicle) {
   `;
 };
 
+/* **************************************
+ * Build the classification select list
+ * ************************************ */
+Util.buildClassificationList = async function (classification_id = null) {
+  let data = await invModel.getClassifications();
+  let list =
+    '<select name="classification_id" id="classificationList" required>';
+  list += '<option value="">Choose a Classification</option>';
+  data.rows.forEach((row) => {
+    list += `<option value="${row.classification_id}"`;
+    // pre-select if classification_id is passed
+    if (classification_id == row.classification_id) {
+      list += " selected";
+    }
+    list += `>${row.classification_name}</option>`;
+  });
+  list += "</select>";
+  return list;
+};
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for

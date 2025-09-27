@@ -464,23 +464,6 @@ label {
 }
 
 
-/* ===========================
-   Notice Styling
-   =========================== */
-/* Flash Message*/
-.notice {
-  text-align: center;
-  font-size: 1.2rem;
-  list-style-type: none;
-  background: #f8d7da;
-  color: #721c24;
-  padding: 5px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  
-}
-
-
 
 /* ===========================
    REGISTER PAGE STYLING
@@ -586,6 +569,137 @@ input:required:valid {
 }
 
 
+/* *****************************
+   Add Vehicle Form Container
+****************************** */
+#addVehicleForm {
+  max-width: 600px; /* Limit the maximum width of the form to 600px */
+  margin: 2rem auto; /* Center the form horizontally and add 2rem vertical spacing */
+  padding: 1.5rem; /* Add padding inside the form for spacing around content */
+  background: #f9f9f9; /* Set a light gray background color for the form */
+  border: 1px solid #ddd; /* Add a thin border with a slightly darker gray color */
+  border-radius: 12px; /* Round the corners of the form */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow for 3D effect */
+}
+
+/*  Label Style  */ 
+#addVehicleForm label {
+  display: block; /* Make label occupy full width (stacked above inputs) */
+  margin-bottom: 0.5rem; /* Space below the label */
+  font-weight: bold; /* Make the text bold */
+  color: #333; /* Dark gray text color */
+  font-size: 0.95rem; /* Slightly smaller than default font size */
+}
+
+/* Input & Textarea Style */
+#addVehicleForm input,
+#addVehicleForm textarea,
+#addVehicleForm select {
+  width: 100%; /* Make input, textarea, and select span full width of container */
+  padding: 0.6rem; /* Add inner spacing inside input fields */
+  margin-bottom: 1rem; /* Add spacing between consecutive inputs */
+  font-size: 1rem; /* Set font size */
+  border: 1px solid #bbb; /* Set border color for input fields */
+  border-radius: 8px; /* Round corners of input fields */
+  background-color: #fff; /* White background for inputs */
+  transition: border 0.3s ease, box-shadow 0.3s ease; /* Smooth animation for border and shadow when focused */
+}
+
+/* Input & Textarea Focus Effect */
+#addVehicleForm input:focus,
+#addVehicleForm textarea:focus,
+#addVehicleForm select:focus {
+  border-color: #007bff; /* Change border color to blue on focus */
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.4); /* Add subtle glow effect on focus */
+}
+
+/* Input Validation Styles */
+#addVehicleForm input:valid {
+  border-right: 5px solid #28a745; /* Green border when input is valid */
+  padding-left: 8px;
+}
+
+#addVehicleForm input:invalid {
+  border-right:5px solid #dc3545; /* Red border when input is invalid */
+  padding: 8px;
+  box-shadow: 0 0 5px rgba(220, 53, 69, 0.4); /* Subtle red glow */
+}
+
+/* change placeholder color for invalid inputs */
+#addVehicleForm input:invalid::placeholder {
+  color: #dc3545; /* Red placeholder text when invalid */
+}
+
+
+/* Submit Button */
+#addVehicleForm button[type="submit"] {
+  display: inline-block; /* Make the button behave like an inline block element */
+  width: 100%; /* Button spans full width of container */
+  background: #007bff; /* Blue background color */
+  color: #fff; /* White text color */
+  font-size: 1rem; /* Set font size */
+  padding: 0.8rem; /* Add padding inside the button */
+  border: none; /* Remove default border */
+  border-radius: 10px; /* Round corners of the button */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  font-weight: bold; /* Make button text bold */
+  transition: background 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effects */
+}
+
+/* Submit Button Hover Effect */
+#addVehicleForm button[type="submit"]:hover {
+  background: #0056b3; /* Darker blue background on hover */
+  transform: translateY(-2px); /* Slightly lift the button up */
+}
+
+
+/* *****************************
+   Classification Links Styling
+****************************** */
+.management-links a {
+  display: inline-block;             /* Makes links behave like buttons */
+  margin: 0.5rem;                    /* Space between links */
+  padding: 0.6rem 1rem;              /* Inner spacing */
+  background-color: #007bff;         /* Blue background */
+  color: #fff;                        /* White text */
+  text-decoration: none;             /* Remove underline */
+  border-radius: 8px;                /* Rounded corners */
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Hover effect */
+.management-links a:hover {
+  background-color: #0056b3;         /* Darker blue */
+  transform: translateY(-2px);       /* Slight lift */
+}
+
+
+/* ===========================
+   Notice Styling
+   =========================== */
+/* Flash Message*/
+.notice {
+  text-align: center;
+  font-size: 1.2rem;
+  list-style-type: none;
+  background: #f8d7da;
+  color: #721c24;
+  padding: 5px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  
+}
+.notice.error {
+  background: #f8d7da;
+  color: #721c24;
+}
+.notice.success {
+  background: #f8d7da;
+  color: #0c8150;
+}
 
 
 /* *****************************
