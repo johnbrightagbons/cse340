@@ -1,0 +1,26 @@
+<%# **************************************
+    Display Flash Messages (if any)
+************************************* %>
+<%- messages() %>
+
+<%# **************************************
+    The Content Heading
+************************************* %>
+<div class="login-container">
+    <% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+    res.redirect('/')
+} %>
+  <div>
+  <h2>Welcome!</h2>
+    <p>You are logged in. Use the options below to manage your account.</p>
+  
+</div>
+
+<div class="account-actions">
+  <a href="/account/edit" class="btn btn-primary">Edit Account Information</a>
+  <a href="/account/logout" class="btn btn-secondary">Logout</a>
+</div>
+
+

@@ -1,7 +1,8 @@
 // utilities/index.js  hold functions that are "utility" in nature, meaning that
 // it will be reuse over and over,
 // but they don't directly belong to the M-V-C structure
-
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 const invModel = require("../models/inventory-model"); // requires the inventory-model file, so it can be used to get data from the database
 const Util = {}; // creates an empty Util object
 
@@ -138,6 +139,29 @@ Util.buildClassificationList = async function (classification_id = null) {
   return list;
 };
 
+/* ****************************************
+ * Middleware to check token validity
+ **************************************** */
+Util.checkJWTToken = (req, res, next) => {
+  if (req.cookies.jwt) {
+    jwt.verify(
+      req.cookies.jwt,
+      process.env.ACCESS_TOKEN_SECRET,
+      function (err, accountData) {
+        if (err) {
+          req.flash("Please log in");
+          res.clearCookie("jwt");
+          return res.redirect("/account/login");
+        }
+        res.locals.accountData = accountData;
+        res.locals.loggedin = 1;
+        next();
+      }
+    );
+  } else {
+    next();
+  }
+};
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for

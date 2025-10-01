@@ -19,6 +19,7 @@ const pool = require("./database/");
 const accountController = require("./controllers/accountController");
 const accountRoute = require("./routes/accountRoute");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
 /* ***********************
  * Middleware
@@ -48,6 +49,12 @@ app.use(function (req, res, next) {
   res.locals.messages = require("express-messages")(req, res);
   next();
 });
+
+// Login Activity
+app.use(cookieParser());
+
+// Login Process Activity
+app.use(utilities.checkJWTToken);
 
 /* ***********************
  * View Engine and Templates

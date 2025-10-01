@@ -28,4 +28,22 @@ router.post(
   utilities.handleErrors(accountController.registerAccount)
 );
 
+/* ****************************************
+ *  Route to process login
+ * *************************************** */
+router.post(
+  "/login",
+  regValidate.loginRules(), // validate login inputs (e.g., email + password)
+  regValidate.checkLoginData, // check for validation errors
+  utilities.handleErrors(accountController.accountLogin) // send data to controller
+);
+
+/* ****************************************
+ *  Route to process management view
+ * *************************************** */
+router.get(
+  "/management",
+  utilities.handleErrors(accountController.buildAccountManagement)
+);
+
 module.exports = router;
