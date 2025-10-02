@@ -71,6 +71,8 @@ nav {
 }
 
 nav ul {
+  flex-wrap: wrap;        /*  allows items to wrap to next line */
+  gap: 0.1rem;              /* space between menu items */
   list-style: none; /* Removes the default bullets */
   display: flex; /* Uses flexbox for layout */
   flex-direction: row; /* Arranges the nav button horizontally */
@@ -78,11 +80,12 @@ nav ul {
   justify-content: space-between; /* Places items evenly */
   padding: 0; /* Removes default padding */
   margin: 0; /* Removes default margin */
-  width: 80%; /* Controls width to maintain spacing */
+  width: 100%; /* Controls width to maintain spacing */
 }
 
 nav ul li {
-  padding: 10px 20px; /* Adds spacing around the text */
+  flex: 0 0 auto;         /* items keep their size, don’t stretch */
+   padding: 1px 1px;/* Adds spacing around the text */
 }
 
 nav ul li a {

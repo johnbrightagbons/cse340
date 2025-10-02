@@ -6,13 +6,10 @@
 <%# **************************************
     The Content Heading
 ************************************* %>
-<div class="login-container">
-    <% if (title) { %>
-<h1><%= title %></h1>
-<% } else {
-    res.redirect('/')
-} %>
-  <div>
+<% if (title) { %>
+  <h1><%= title %></h1>
+<% } %>
+
   <h2>Welcome!</h2>
     <p>You are logged in. Use the options below to manage your account.</p>
   

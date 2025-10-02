@@ -42,7 +42,8 @@ router.post(
  *  Route to process management view
  * *************************************** */
 router.get(
-  "/management",
+  "/",
+  utilities.checkLogin,
   utilities.handleErrors(accountController.buildAccountManagement)
 );
 

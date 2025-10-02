@@ -13,7 +13,6 @@ async function buildLogin(req, res, next) {
     title: "Login",
     nav,
     errors: null,
-    message: req.flash("notice"),
   });
 }
 
@@ -26,7 +25,6 @@ async function buildRegister(req, res, next) {
     title: "Register",
     nav,
     errors: null,
-    message: req.flash("notice"),
   });
 }
 
@@ -151,7 +149,6 @@ async function buildAccountManagement(req, res) {
     if (token) {
       user = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
     }
-
     res.render("account/accountManagement", {
       title: "Account Management",
       nav,
@@ -161,7 +158,7 @@ async function buildAccountManagement(req, res) {
     });
   } catch (error) {
     console.error("Error in buildAccountManagement:", error);
-    req.flash("message", "Error loading account management");
+    req.flash("notice", "Error loading account management");
     res.redirect("/account/login");
   }
 }
