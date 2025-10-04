@@ -1,0 +1,155 @@
+#link {
+  display: inline-block; /* Treat as block but inline */
+  background-color: #4CAF50; /* Green background */
+  color: #fff; /* White text */
+  padding: 10px 14px; /* Inner spacing */
+  text-decoration: none; /* Remove underline */
+  border-radius: 5px; /* Rounded edges */
+  list-style: none;
+  transition: background-color 0.2s ease; /* Smooth hover effect */
+}
+
+/* ===============================
+   Header Styles
+   =============================== */
+h1 {
+  font-size: 2rem; /* Large heading size */
+  color: #2c3e50; /* Dark blue-gray color */
+  margin-bottom: 1rem; /* Space below heading */
+  border-bottom: 2px solid black ; /* Green underline */
+  padding-bottom: 0.5rem; /* Padding inside bottom */
+  text-align: center; /* Center the text */
+}
+
+h2, p {
+  font-size: 1.5rem; /* Medium heading size */
+  color: #34495e; /* Slightly lighter blue-gray */
+  margin-top: 2rem; /* Space above */
+  margin-bottom: 1rem; /* Space below */
+  text-align: center; /* Centered */
+}
+
+/* ===============================
+   Messages Section
+   =============================== */
+.message {
+  background-color: #eafaf1; /* Light green background */
+  border: 1px solid #2ecc71; /* Green border */
+  color: #27ae60; /* Dark green text */
+  padding: 10px; /* Inner spacing */
+  margin: 20px auto; /* Center with top/bottom spacing */
+  border-radius: 4px; /* Rounded corners */
+  max-width: 600px; /* Limit width */
+}
+.message.error {
+  background-color: #fdecea; /* Light red background for errors */
+  border: 1px solid #e74c3c; /* Red border */
+  color: #c0392b; /* Dark red text */
+}
+
+
+/* ===============================
+   Classification Dropdown
+   =============================== */
+select#classificationSelect,
+select#classificationList {
+  width: 250px; /* Fixed width */
+  padding: 6px; /* Inner spacing */
+  font-size: 1rem; /* Normal text size */
+  margin: 15px auto 20px auto; /* Center and add spacing */
+  display: block; /* Make dropdown take full line */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 4px; /* Rounded corners */
+}
+
+/* ===============================
+   Inventory Table Wrapper
+   =============================== */
+.table-container {
+  max-width: 900px; /* Restrict width */
+  margin: 0 auto; /* Center horizontally */
+  overflow-x: auto; /* Add horizontal scroll for small screens */
+  border-radius: 6px; /* Rounded edges */
+}
+
+/* ===============================
+   Inventory Table
+   =============================== */
+#inventoryDisplay {
+  width: 100%; /* Full width */
+  border-collapse: collapse; /* Merge borders */
+  margin-top: 20px; /* Space above table */
+  background: #fff; /* White background */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Light shadow */
+}
+#inventoryDisplay thead {
+  background-color: #4CAF50; /* Green header */
+  color: #fff; /* White text */
+}
+#inventoryDisplay th,
+#inventoryDisplay td {
+  border: 1px solid #ddd; /* Light gray border */
+  padding: 10px; /* Inner spacing */
+  text-align: left; /* Align text left */
+}
+#inventoryDisplay tr:nth-child(even) {
+  background-color: #f2f2f2; /* Zebra striping for even rows */
+}
+
+/*  hover effect for table rows */
+#inventoryDisplay tr:hover {
+  background-color: #e0f7fa; /* Light blue highlight on hover */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* ===============================
+   Action Buttons in Table
+   =============================== */
+#inventoryDisplay a {
+  display: inline-block; /* Button-like display */
+  padding: 6px 12px; /* Spacing */
+  border-radius: 4px; /* Rounded edges */
+  text-decoration: none; /* Remove underline */
+  font-size: 0.9rem; /* Slightly smaller text */
+  font-weight: bold; /* Bold text */
+  transition: background-color 0.2s ease; /* Smooth hover transition */
+}
+
+/* Green button for Modify */
+#inventoryDisplay a[href*="edit"] {
+  background-color: #27ae60; /* Green background */
+  color: #fff; /* White text */
+}
+#inventoryDisplay a[href*="edit"]:hover {
+  background-color: #1e8449; /* Darker green on hover */
+}
+
+/* Red button for Delete */
+#inventoryDisplay a[href*="delete"] {
+  background-color: #e74c3c; /* Red background */
+  color: #fff; /* White text */
+}
+#inventoryDisplay a[href*="delete"]:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+/* ===============================
+   Responsive Adjustments
+   =============================== */
+@media (max-width: 600px) {
+  ul {
+    flex-direction: column; /* Stack nav links vertically */
+    gap: 10px; /* Smaller gap */
+  }
+
+  #inventoryDisplay th,
+  #inventoryDisplay td {
+    font-size: 0.85rem; /* Smaller font size */
+    padding: 6px; /* Less padding */
+  }
+
+  #inventoryDisplay a {
+    padding: 4px 8px; /* Smaller buttons */
+    font-size: 0.8rem; /* Smaller text */
+  }
+}

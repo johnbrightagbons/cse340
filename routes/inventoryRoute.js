@@ -68,4 +68,11 @@ router.get(
 
 router.post("/add-vehicle", utilities.handleErrors(invController.addVehicle));
 
+/* ******************************
+ * Get Inventory AJAX Route
+ ***************************** */
+router.get(
+  "/getInventory/:classification_id",
+  utilities.handleErrors(invController.getInventoryJSON)
+);
 module.exports = router;

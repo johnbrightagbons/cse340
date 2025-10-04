@@ -47,4 +47,13 @@ router.get(
   utilities.handleErrors(accountController.buildAccountManagement)
 );
 
+/* ****************************************
+ *  Account Management view
+ * *************************************** */
+router.get(
+  "/management",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.buildAccountManagement)
+);
+
 module.exports = router;
