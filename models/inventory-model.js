@@ -124,6 +124,21 @@ async function updateVehicle(
     console.error("model error: " + error);
   }
 }
+
+/* ***************************
+ *  Delete vehicle by ID
+ * ************************** */
+async function deleteVehicle(inv_id) {
+  try {
+    const sql = "DELETE FROM public.inventory WHERE inv_id = $1 RETURNING *";
+    const result = await pool.query(sql, [inv_id]);
+    return result.rows[0]; // deleted row (or undefined if nothing deleted)
+  } catch (error) {
+    console.error("deleteVehicle error:", error);
+    return null;
+  }
+}
+
 module.exports = {
   getClassifications,
   getInventoryByClassificationId,
@@ -131,4 +146,5 @@ module.exports = {
   addClassification,
   addVehicle,
   updateVehicle,
+  deleteVehicle,
 }; // exports the function for use elsewhere
