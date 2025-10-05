@@ -21,7 +21,8 @@ Message
 <%# **************************************
     Edit Vehicle View
 ************************************* %>
-<form id="editVehicleForm" action="/inv/update" method="POST" novalidate>
+<form id="updateForm" action="/inv/update" method="POST" novalidate>
+
   <input type="hidden" name="inv_id" value="<%= inv_id %>">
   <p>All fields are required unless otherwise noted.</p>
 
@@ -57,5 +58,10 @@ Message
   <label for="inv_thumbnail">Thumbnail Path</label>
   <input type="text" id="inv_thumbnail" name="inv_thumbnail" value="<%= inv_thumbnail %>">
 
-  <button type="submit" class="btn">Update Vehicle</button>
+  <input type="hidden" name="inv_id"
+<% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+<% } %>>
+ <button type="submit" class="btn" disabled>Update Vehicle</button>
+
 </form>
+<script src="/js/inv-update.js"></script>

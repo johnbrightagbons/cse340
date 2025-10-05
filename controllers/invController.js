@@ -289,6 +289,68 @@ invCont.addVehicle = async function (req, res, next) {
 };
 
 /* ***************************
+ *  Update Inventory Data
+ * ************************** */
+invCont.updateVehicle = async function (req, res, next) {
+  let nav = await utilities.getNav();
+  const {
+    inv_id,
+    inv_make,
+    inv_model,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_year,
+    inv_miles,
+    inv_color,
+    classification_id,
+  } = req.body;
+  const updateResult = await invModel.updateVehicle(
+    inv_id,
+    inv_make,
+    inv_model,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_year,
+    inv_miles,
+    inv_color,
+    classification_id
+  );
+
+  if (updateResult) {
+    const itemName = updateResult.inv_make + " " + updateResult.inv_model;
+    req.flash("notice", `The ${itemName} was successfully updated.`);
+    res.redirect("/inv/");
+  } else {
+    const classificationSelect = await utilities.buildClassificationList(
+      classification_id
+    );
+    const itemName = `${inv_make} ${inv_model}`;
+    req.flash("notice", "Sorry, the insert failed.");
+    res.status(501).render("inventory/edit-inventory", {
+      title: "Edit " + itemName,
+      nav,
+      classificationSelect: classificationSelect,
+      errors: null,
+      inv_id,
+      inv_make,
+      inv_model,
+      inv_year,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_miles,
+      inv_color,
+      classification_id,
+    });
+  }
+};
+
+/* ***************************
  *  Return Inventory by Classification As JSON
  * ************************** */
 invCont.getInventoryJSON = async (req, res, next) => {
@@ -340,6 +402,59 @@ invCont.buildEditInventoryView = async function (req, res, next) {
     classification_id: itemData.classification_id,
   });
 };
-console.log("Controller loaded:", Object.keys(invCont));
+
+invCont.updateVehicle = async function (req, res) {
+  try {
+    // Clean up inv_id if it's an array
+    req.body.inv_id = parseInt(
+      Array.isArray(req.body.inv_id) ? req.body.inv_id[0] : req.body.inv_id
+    );
+
+    const {
+      inv_id,
+      classification_id,
+      inv_make,
+      inv_model,
+      inv_year,
+      inv_price,
+      inv_miles,
+      inv_color,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+    } = req.body;
+
+    const updateResult = await invModel.updateVehicle(
+      parseInt(inv_id),
+      inv_make,
+      inv_model,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      parseFloat(inv_price),
+      parseInt(inv_year),
+      parseInt(inv_miles),
+      inv_color,
+      parseInt(classification_id)
+    );
+
+    if (updateResult) {
+      req.flash(
+        "notice",
+        `Successfully updated ${updateResult.inv_make} ${updateResult.inv_model}.`
+      );
+      res.redirect("/inv/");
+    } else {
+      req.flash("notice", "Sorry, the update failed.");
+      res.redirect(`/inv/edit-vehicle/${inv_id}`);
+    }
+  } catch (error) {
+    console.error("❌ Controller error updating vehicle:", error);
+    res.status(500).render("inventory/edit-vehicle", {
+      title: "Edit Inventory Item",
+      message: "Error updating vehicle. Please try again.",
+    });
+  }
+};
 
 module.exports = invCont;

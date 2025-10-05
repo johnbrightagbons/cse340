@@ -8,6 +8,7 @@ const express = require("express");
 const router = new express.Router();
 const invController = require("../controllers/invController");
 const utilities = require("../utilities");
+const invValidate = require("../utilities/inventory-validation");
 
 /* *******************************
  * Inventory Management Route
@@ -85,4 +86,13 @@ router.get(
   utilities.handleErrors(invController.buildEditInventoryView)
 );
 
+/* *******************************
+ * Route to inventory or Vehicle
+ * *******************************/
+router.post(
+  "/update/",
+  invValidate.inValidate.newInventoryRules(),
+  invValidate.inValidate.checkUpdateData,
+  utilities.handleErrors(invController.updateVehicle) // controller
+);
 module.exports = router;
