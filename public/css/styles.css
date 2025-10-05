@@ -705,6 +705,97 @@ input:required:valid {
 }
 
 
+
+/* ===========================
+  Edit Vehicle Form Styling
+   =========================== */
+#editVehicleForm {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
+}
+
+#editVehicleForm p {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+#editVehicleForm label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+#editVehicleForm input,
+#editVehicleForm textarea,
+#editVehicleForm select {
+  width: 100%;
+  padding: 0.7rem;
+  margin-top: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+/* Input Validation Styles */
+#editVehicleForm input:valid {
+  border-right: 5px solid #28a745; /* Green border when input is valid */
+  padding-left: 8px;
+}
+
+#editVehicleForm input:invalid {
+  border-right:5px solid #dc3545; /* Red border when input is invalid */
+  padding: 8px;
+  box-shadow: 0 0 5px rgba(220, 53, 69, 0.4); /* Subtle red glow */
+}
+
+#editVehicleForm input:focus,
+#editVehicleForm textarea:focus,
+#editVehicleForm select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* ===== Sticky Header and Button ===== */
+h1 {
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #eee;
+  z-index: 10;
+}
+
+#editVehicleForm .btn {
+  position: sticky;
+  bottom: 0;
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: background-color 0.3s;
+  z-index: 10;
+}
+
+#editVehicleForm .btn:hover {
+  background: #0056b3;
+}
+
+
+
+
+
 /* *****************************
 Responsive Design
 ****************************** */

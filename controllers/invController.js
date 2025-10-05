@@ -302,4 +302,44 @@ invCont.getInventoryJSON = async (req, res, next) => {
     next(new Error("No data returned"));
   }
 };
+
+/* ***************************
+ *  Build edit inventory view
+ * ************************** */
+invCont.buildEditInventoryView = async function (req, res, next) {
+  const inv_id = parseInt(req.params.inv_id); // get id from URL
+  let nav = await utilities.getNav();
+
+  // get the inventory item by id
+  const itemData = await invModel.getVehicleById(inv_id);
+
+  // build dropdown list for classifications, preselect the one belonging to this item
+  const classificationSelect = await utilities.buildClassificationList(
+    itemData.classification_id
+  );
+
+  // combine make and model for display title
+  const itemName = `${itemData.inv_make} ${itemData.inv_model}`;
+
+  // render edit-inventory view and send all item data to populate the form
+  res.render("./inventory/edit-vehicle", {
+    title: "Edit " + itemName,
+    nav,
+    classificationSelect,
+    errors: null,
+    inv_id: itemData.inv_id,
+    inv_make: itemData.inv_make,
+    inv_model: itemData.inv_model,
+    inv_year: itemData.inv_year,
+    inv_description: itemData.inv_description,
+    inv_image: itemData.inv_image,
+    inv_thumbnail: itemData.inv_thumbnail,
+    inv_price: itemData.inv_price,
+    inv_miles: itemData.inv_miles,
+    inv_color: itemData.inv_color,
+    classification_id: itemData.classification_id,
+  });
+};
+console.log("Controller loaded:", Object.keys(invCont));
+
 module.exports = invCont;

@@ -1,0 +1,61 @@
+<%# **************************************
+    Header
+************************************* %>
+<% if (title) { %>
+  <h1><%= title %></h1>
+<% } %>
+
+<%# **************************************
+Message
+************************************* %>
+<% if (errors && errors.length > 0) { %>
+  <div class="notice">
+    <ul>
+      <% errors.forEach(function(err) { %>
+        <li><%= err %></li>
+      <% }); %>
+    </ul>
+  </div>
+<% } %>
+
+<%# **************************************
+    Edit Vehicle View
+************************************* %>
+<form id="editVehicleForm" action="/inv/update" method="POST" novalidate>
+  <input type="hidden" name="inv_id" value="<%= inv_id %>">
+  <p>All fields are required unless otherwise noted.</p>
+
+  <!-- Classification -->
+  <label for="classificationSelect">* Classification</label>
+  <%- classificationSelect %>
+
+  <label for="inv_make">* Make</label>
+  <input type="text" id="inv_make" name="inv_make" required maxlength="50" value="<%= inv_make %>">
+
+  <label for="inv_model">* Model</label>
+  <input type="text" id="inv_model" name="inv_model" required maxlength="50" value="<%= inv_model %>">
+
+  <label for="inv_year">* Year</label>
+  <input type="number" id="inv_year" name="inv_year" required min="1900" max="<%= new Date().getFullYear() + 1 %>" value="<%= inv_year %>">
+
+  <label for="inv_price">* Price (USD)</label>
+  <input type="text" id="inv_price" name="inv_price" required pattern="^\d+(\.\d{0,2})?$"
+ value="<%= inv_price %>">
+
+  <label for="inv_miles">* Mileage</label>
+  <input type="number" id="inv_miles" name="inv_miles" required min="0" value="<%= inv_miles %>">
+
+  <label for="inv_color">* Color</label>
+  <input type="text" id="inv_color" name="inv_color" required maxlength="30" value="<%= inv_color %>">
+
+  <label for="inv_description">* Description</label>
+  <textarea id="inv_description" name="inv_description" rows="5" required><%= inv_description %></textarea>
+
+  <label for="inv_image">Image Path</label>
+  <input type="text" id="inv_image" name="inv_image" value="<%= inv_image %>">
+
+  <label for="inv_thumbnail">Thumbnail Path</label>
+  <input type="text" id="inv_thumbnail" name="inv_thumbnail" value="<%= inv_thumbnail %>">
+
+  <button type="submit" class="btn">Update Vehicle</button>
+</form>

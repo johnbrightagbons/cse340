@@ -75,4 +75,14 @@ router.get(
   "/getInventory/:classification_id",
   utilities.handleErrors(invController.getInventoryJSON)
 );
+
+/* *******************************
+ * Route to build the Edit Inventory Item view
+ * /inv/edit/:inv_id
+ * *******************************/
+router.get(
+  "/edit/:inv_id",
+  utilities.handleErrors(invController.buildEditInventoryView)
+);
+
 module.exports = router;
