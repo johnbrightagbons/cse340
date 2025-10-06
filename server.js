@@ -1,6 +1,5 @@
 /* ******************************************
- * This server.js file is the primary file of the
- * application. It is used to control the project.
+ * Primary server.js file for CSE 340 Backend
  *******************************************/
 /* ***********************
  * Require Statements
@@ -20,6 +19,7 @@ const accountController = require("./controllers/accountController");
 const accountRoute = require("./routes/accountRoute");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const jwt = require("jsonwebtoken");
 
 /* ***********************
  * Middleware
@@ -52,6 +52,28 @@ app.use(function (req, res, next) {
 
 // Login Activity
 app.use(cookieParser());
+
+/* ***********************************
+ * Set res.locals for all views
+ * ***********************************/
+app.use((req, res, next) => {
+  // If using JWT stored in cookies:
+  const token = req.cookies.jwt;
+  if (token) {
+    try {
+      const user = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+      res.locals.loggedin = true;
+      res.locals.accountData = user;
+    } catch (err) {
+      res.locals.loggedin = false;
+      res.locals.accountData = null;
+    }
+  } else {
+    res.locals.loggedin = false;
+    res.locals.accountData = null;
+  }
+  next();
+});
 
 // Login Process Activity
 app.use(utilities.checkJWTToken);

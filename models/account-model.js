@@ -71,4 +71,22 @@ accountModel.getAccountByEmail = async function (account_email) {
   }
 };
 
+/* *****************************
+ *   Get Account by ID
+ * ***************************** */
+accountModel.getAccountById = async function (account_id) {
+  try {
+    const result = await pool.query(
+      `SELECT account_id, account_firstname, account_lastname, account_email, account_type
+       FROM public.account
+       WHERE account_id = $1`,
+      [account_id]
+    );
+    return result.rows[0];
+  } catch (error) {
+    console.error("getAccountById error:", error);
+    throw error;
+  }
+};
+
 module.exports = accountModel;

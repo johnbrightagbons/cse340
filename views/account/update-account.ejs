@@ -1,0 +1,58 @@
+<%# **************************************
+    Display Flash Messages (if any)
+************************************* %>
+<%- messages() %>
+
+<%# **************************************
+    The Content Heading
+************************************* %>
+<% if (title) { %>
+  <h1><%= title %></h1>
+<% } %>
+
+<% if (errors && errors.length) { %>
+  <div class="notice">
+    <ul>
+      <% errors.forEach(function(err) { %>
+        <li><%= err %></li>
+      <% }) %>
+    </ul>
+  </div>
+<% } %>
+
+<!-- Account Update Form -->
+<section class="account-update">
+  <h2>Account Update</h2>
+  <form action="/account/update" method="POST" novalidate>
+    <input type="hidden" name="account_id" value="<%= account ? account.account_id : locals.account_id %>">
+
+    <label for="account_firstname">First name</label>
+    <input id="account_firstname" name="account_firstname" type="text" required
+      value="<%= (locals && locals.account_firstname) ? locals.account_firstname : (account ? account.account_firstname : '') %>">
+
+    <label for="account_lastname">Last name</label>
+    <input id="account_lastname" name="account_lastname" type="text" required
+      value="<%= (locals && locals.account_lastname) ? locals.account_lastname : (account ? account.account_lastname : '') %>">
+
+    <label for="account_email">Email</label>
+    <input id="account_email" name="account_email" type="email" required
+      value="<%= (locals && locals.account_email) ? locals.account_email : (account ? account.account_email : '') %>">
+
+    <button type="submit">Update Account</button>
+  </form>
+</section>
+
+<!-- Change Password Form -->
+<section class="account-password">
+  <h2>Change Password</h2>
+  <p>Enter a new password to replace the existing one. Password must be at least 12 characters and contain upper/lowercase, a number and a symbol.</p>
+
+  <form action="/account/password" method="POST" novalidate>
+    <input type="hidden" name="account_id" value="<%= account ? account.account_id : locals.account_id %>">
+
+    <label for="new_password">New password</label>
+    <input id="new_password" name="account_password" type="password" required>
+
+    <button type="submit">Change Password</button>
+  </form>
+</section>

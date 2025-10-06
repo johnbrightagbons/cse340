@@ -22,6 +22,8 @@ router.get("/", utilities.handleErrors(invController.buildManagement));
  * *******************************/
 router.get(
   "/add-classification",
+  utilities.checkJWTToken,
+  utilities.checkInventoryAuth,
   utilities.handleErrors(invController.buildAddClassification)
 );
 
@@ -58,12 +60,16 @@ router.get(
 // Handle Add Classification Post
 router.post(
   "/add-classification",
+  utilities.checkJWTToken,
+  utilities.checkInventoryAuth,
   utilities.handleErrors(invController.addClassification)
 );
 
 // routes/inventoryRoute.js — add (with other routes)
 router.get(
   "/add-vehicle",
+  utilities.checkJWTToken,
+  utilities.checkInventoryAuth,
   utilities.handleErrors(invController.buildAddVehicle)
 );
 
@@ -83,6 +89,8 @@ router.get(
  * *******************************/
 router.get(
   "/edit/:inv_id",
+  utilities.checkJWTToken,
+  utilities.checkInventoryAuth,
   utilities.handleErrors(invController.buildEditInventoryView)
 );
 
@@ -91,6 +99,8 @@ router.get(
  * *******************************/
 router.post(
   "/update/",
+  utilities.checkJWTToken,
+  utilities.checkInventoryAuth,
   invValidate.inValidate.newInventoryRules(),
   invValidate.inValidate.checkUpdateData,
   utilities.handleErrors(invController.updateVehicle) // controller
@@ -102,9 +112,16 @@ router.post(
  * *******************************/
 router.get(
   "/delete/:inv_id",
+  utilities.checkJWTToken,
+  utilities.checkInventoryAuth,
   utilities.handleErrors(invController.buildDeleteVehicleView)
 );
 
 // Handle the actual delete request
-router.post("/delete", utilities.handleErrors(invController.deleteVehicle));
+router.post(
+  "/delete",
+  utilities.checkJWTToken,
+  utilities.checkInventoryAuth,
+  utilities.handleErrors(invController.deleteVehicle)
+);
 module.exports = router;

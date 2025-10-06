@@ -56,4 +56,30 @@ router.get(
   utilities.handleErrors(accountController.buildAccountManagement)
 );
 
+// GET update form (only logged in user should access own update page)
+router.get(
+  "/update/:account_id",
+  utilities.checkJWTToken, // set res.locals
+  utilities.handleErrors(accountController.buildUpdateAccount)
+);
+
+// POST update account info
+router.post(
+  "/update",
+  regValidate.updateAccountRules(), // new validation middleware
+  regValidate.checkUpdateData,
+  utilities.handleErrors(accountController.updateAccount)
+);
+
+// POST change password
+router.post(
+  "/password",
+  regValidate.updatePasswordRules(),
+  regValidate.checkPasswordData,
+  utilities.handleErrors(accountController.changePassword)
+);
+
+// Logout
+router.get("/logout", utilities.handleErrors(accountController.accountLogout));
+
 module.exports = router;

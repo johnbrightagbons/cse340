@@ -176,6 +176,27 @@ Util.checkLogin = (req, res, next) => {
 };
 
 /* ****************************************
+ *  Check Inventory Authorization Middleware
+ *  Allows only Employee or Admin
+ *****************************************/
+Util.checkInventoryAuth = (req, res, next) => {
+  // If logged in and accountData present, check type
+  const acct = res.locals.accountData;
+  if (
+    acct &&
+    (acct.account_type === "Employee" || acct.account_type === "Admin")
+  ) {
+    return next();
+  }
+  // otherwise require login
+  req.flash(
+    "notice",
+    "You must be an employee or admin to access that resource."
+  );
+  return res.redirect("/account/login");
+};
+
+/* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for
  * General Error Handling

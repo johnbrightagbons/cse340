@@ -140,14 +140,22 @@ async function accountLogin(req, res) {
 /* ****************************************
  *  Deliver Account Management view
  * *************************************** */
-async function buildAccountManagement(req, res) {
+async function buildAccountManagement(req, res, next) {
   try {
     let nav = await utilities.getNav();
     const token = req.cookies.jwt;
-    let user = null;
+    let user = res.locals.accountData || null;
 
     if (token) {
       user = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+
+      let classificationList = null;
+      if (
+        user &&
+        (user.account_type === "Employee" || user.account_type === "Admin")
+      ) {
+        classificationList = await utilities.buildClassificationList();
+      }
     }
     res.render("account/accountManagement", {
       title: "Account Management",
@@ -163,10 +171,114 @@ async function buildAccountManagement(req, res) {
   }
 }
 
+// Deliver update view
+async function buildUpdateAccount(req, res, next) {
+  try {
+    const nav = await utilities.getNav();
+    const account_id = parseInt(req.params.account_id || req.body.account_id);
+    const account = await accountModel.getAccountById(account_id); // we will create this model fn
+    if (!account) {
+      req.flash("notice", "Account not found.");
+      return res.redirect("/account/management");
+    }
+    res.render("account/update-account", {
+      title: "Update Account",
+      nav,
+      account,
+      errors: null,
+    });
+  } catch (err) {
+    next(err);
+  }
+}
+
+// Process account info update
+async function updateAccount(req, res, next) {
+  try {
+    const { account_id, account_firstname, account_lastname, account_email } =
+      req.body;
+    // Check if email is in use by another account
+    const existing = await accountModel.getAccountByEmail(account_email);
+    if (existing && existing.account_id != account_id) {
+      req.flash("notice", "That email is already in use.");
+      const nav = await utilities.getNav();
+      return res.status(400).render("account/update-account", {
+        title: "Update Account",
+        nav,
+        errors: ["That email is already in use."],
+        locals: req.body,
+      });
+    }
+
+    const result = await accountModel.updateAccountInfo(
+      account_id,
+      account_firstname,
+      account_lastname,
+      account_email
+    );
+    const nav = await utilities.getNav();
+    if (result) {
+      req.flash("notice", "Account updated successfully.");
+    } else {
+      req.flash("notice", "Account update failed.");
+    }
+    // fetch fresh account and go back to management
+    const account = await accountModel.getAccountById(account_id);
+    res.render("account/accountManagement", {
+      title: "Account Management",
+      nav,
+      user: account,
+      message: req.flash("notice"),
+      errors: null,
+    });
+  } catch (err) {
+    next(err);
+  }
+}
+
+// Process password change
+async function changePassword(req, res, next) {
+  try {
+    const { account_id, account_password } = req.body;
+    const hashed = await bcrypt.hash(account_password, 10);
+    const result = await accountModel.updatePassword(account_id, hashed);
+    const nav = await utilities.getNav();
+    if (result) {
+      req.flash("notice", "Password updated successfully.");
+    } else {
+      req.flash("notice", "Password update failed.");
+    }
+    const account = await accountModel.getAccountById(account_id);
+    res.render("account/accountManagement", {
+      title: "Account Management",
+      nav,
+      user: account,
+      message: req.flash("notice"),
+      errors: null,
+    });
+  } catch (err) {
+    next(err);
+  }
+}
+
+// logout handler
+async function accountLogout(req, res, next) {
+  try {
+    res.clearCookie("jwt");
+    req.flash("notice", "You have been logged out.");
+    res.redirect("/");
+  } catch (err) {
+    next(err);
+  }
+}
 module.exports = {
   buildLogin,
   buildRegister,
   registerAccount,
   accountLogin,
   buildAccountManagement,
+  buildUpdateAccount,
+  changePassword,
+  updateAccount,
+  accountLogout,
 };
