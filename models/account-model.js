@@ -72,7 +72,7 @@ accountModel.getAccountByEmail = async function (account_email) {
 };
 
 /* *****************************
- *   Get Account by ID
+ *   Get Account by id
  * ***************************** */
 accountModel.getAccountById = async function (account_id) {
   try {
