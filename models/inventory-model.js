@@ -139,6 +139,22 @@ async function deleteVehicle(inv_id) {
   }
 }
 
+/***************************************
+ * Vehicle Search ==== Project Enhancement
+ ************************************* */
+async function searchVehicle(keyword) {
+  try {
+    const sql = `
+    SELECT * FROM inventory
+    WHERE inv_make ILIKE $1 or inv_year ILIKE $1 or inv_model ILIKE $1 or inv_description ILIKE $1;
+    `;
+    const data = await pool.query(sql, [`%${keyword}%`]);
+    return data.rows;
+  } catch (error) {
+    console.error("searchVehicle error: " + error);
+  }
+}
+
 module.exports = {
   getClassifications,
   getInventoryByClassificationId,
@@ -147,4 +163,5 @@ module.exports = {
   addVehicle,
   updateVehicle,
   deleteVehicle,
+  searchVehicle,
 }; // exports the function for use elsewhere

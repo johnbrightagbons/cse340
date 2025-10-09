@@ -6,8 +6,11 @@
     <a href="/" title="Return to home page">CSE Motors</a>
   </span>
 
+
   <!-- User tools section (e.g., login, profile, etc.) -->
-  
+  <form action="/inv/search" method="GET" class="header-search">
+  <input type="text" name="q" placeholder="Search..." required>
+</form>
   <% if (loggedin) { %>
 
     <!-- visible only when logged in -->

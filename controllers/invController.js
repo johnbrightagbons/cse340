@@ -513,4 +513,35 @@ invCont.deleteVehicle = async function (req, res) {
   }
 };
 
+// =============================
+// Vehicle Search === Project Enhancement
+// =============================
+invCont.searchVehicle = async function (req, res, next) {
+  try {
+    const keyword = req.query.q;
+    if (!keyword) {
+      req.flash("notice", "Please Enter a Search Term");
+      return res.redirect("/inv"); // Redirect if no search term
+    }
+
+    // Query the database for matching vehicles
+    const results = await invModel.searchVehicle(keyword);
+
+    //Get navigation bar data
+    const nav = await utilities.getNav();
+
+    // Fetch the search results from the model
+    res.render("inventory/search-results", {
+      title: `Search Results for "${keyword}"`,
+      keyword,
+      results,
+      nav,
+      errors: null,
+    });
+  } catch (error) {
+    console.error("Error in searchVehicle controller:", error);
+    next(error); // Passes error to handle middleware
+  }
+};
+
 module.exports = invCont;

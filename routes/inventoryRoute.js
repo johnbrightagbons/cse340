@@ -124,4 +124,10 @@ router.post(
   utilities.checkInventoryAuth,
   utilities.handleErrors(invController.deleteVehicle)
 );
+
+/******************************************
+ * Vehicle Search Feature
+ ******************************************* */
+// Get /inv/search?q=keyword
+router.get("/search", invController.searchVehicle);
 module.exports = router;

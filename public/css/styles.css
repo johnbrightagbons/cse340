@@ -834,6 +834,63 @@ button:hover {
 
 
 /* *****************************
+Search Results Styles
+****************************** */
+/* --- Search summary text --- */
+.vehicle-list p, .vehicle-item {
+  color: #444;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* --- Vehicle list container --- */
+.vehicle-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem auto;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* --- Individual vehicle item --- */
+.vehicle-item {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vehicle-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* --- Headings inside vehicle item --- */
+.vehicle-item h2 {
+  color: #0077cc;
+  font-size: 1.3rem;
+  margin-bottom: 0.4rem;
+}
+
+/* --- Paragraph text inside vehicle item --- */
+.vehicle-item p {
+  margin: 0.3rem 0;
+  color: #555;
+}
+
+/* --- Price text --- */
+.vehicle-item p:last-child {
+  font-weight: bold;
+  color: #222;
+}
+
+
+
+/* *****************************
 Responsive Design
 ****************************** */
 
@@ -920,6 +977,14 @@ Responsive Design
 
   nav {
     font-size: 0.9rem;
+  }
+  /****Search Items ******/
+  .vehicle-item {
+    padding: 0.8rem 1rem;
+  }
+
+  .vehicle-item h2 {
+    font-size: 1.1rem;
   }
 }
 

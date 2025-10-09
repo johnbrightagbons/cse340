@@ -1,0 +1,36 @@
+<%# **************************************
+    Header
+************************************* %>
+<% if (title) { %>
+  <h1><%= title %></h1>
+<% } %>
+
+<%# **************************************
+Message
+************************************* %>
+<%- messages() %>
+
+
+<!-- ==========================
+     search-results.ejs
+     Displays vehicle search results
+=========================== -->
+
+  <!-- Search Summary -->
+  <p>Results for "<%= keyword %>":</p>
+
+  <!-- If no results -->
+  <% if (!results || results.length === 0) { %>
+    <p>No vehicles found matching your search.</p>
+  <% } else { %>
+    <ul class="vehicle-list">
+      <% results.forEach(vehicle => { %>
+        <li class="vehicle-item">
+          <h2><%= vehicle.inv_year %> <%= vehicle.inv_make %> <%= vehicle.inv_model %></h2>
+          <p><%= vehicle.inv_description %></p>
+          <p>Price: $<%= vehicle.inv_price %></p>
+        </li>
+      <% }) %>
+    </ul>
+  <% } %>
+
